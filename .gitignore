@@ -1,0 +1,29 @@
+# Ignore virtual environments
+**/venv/
+**/.env
+
+# Ignore Python bytecode files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+
+# Ignore IDE and editor folders
+.vscode/
+.idea/
+
+# Ignore Python environment files
+.env
+
+# Ignore local development environment files
+local_settings.py
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore Windows specific files
+Thumbs.db
+
+# Ignore pipenv and poetry lock files (optional, if not using them)
+Pipfile.lock
+poetry.lock
