@@ -11,7 +11,6 @@ session_factory: sessionmaker[AsyncSession] = sessionmaker(
     bind=engine, 
     class_=AsyncSession, 
     autoflush=True,
-    autocommit=True
 )
 
 default_metadata = MetaData()

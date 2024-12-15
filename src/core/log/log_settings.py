@@ -46,7 +46,7 @@ LOGURU_DEFAULT_SETTINGS: dict[str, dict[str, dict[str, Any]]] = {
             "backtrace": True,  # Enable backtrace in console logs
             "diagnose": True,  # Enable diagnostic information in console logs
             "colorize": True,  # Colorize console output for readability
-            "format": "<level>{level}</level>\t | <cyan>{time:YYYY-MM-DD HH:mm:ss}</cyan> | <white>{message}</white> | <green>{extra}</green>",  # Colorized log format
+            "format": "<level>{level}</level>:\t | <cyan>{time:YYYY-MM-DD HH:mm:ss}</cyan> | <white>{message}</white> | <green>{extra}</green>",  # Colorized log format
         }
     }
 }
@@ -62,7 +62,5 @@ def LOGURU_SETTINGS() -> dict[str, dict[str, Any]]:
     Returns:
         dict: Loguru logging configuration (DEBUG or PRODUCTION settings).
     """
-    if DEBUG is True:
-        return LOGURU_DEFAULT_SETTINGS["DEBUG"]
-    else:
-        return LOGURU_DEFAULT_SETTINGS["PRODUCTION"]
+
+    return LOGURU_DEFAULT_SETTINGS[DEBUG and "DEBUG" or "PRODUCTION"]

@@ -9,7 +9,7 @@ from loguru import logger
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+
     logger.info("Application run")
     yield
     logger.info("Application shut down")
-

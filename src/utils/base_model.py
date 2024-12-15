@@ -4,7 +4,9 @@ from functools import lru_cache
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, declared_attr
 from sqlalchemy import Integer, DateTime, func, inspect
 
-from .database_set import default_metadata
+from src.core.base_settings import TIMEZONE
+
+from ..core.database.database_set import default_metadata
 
 
 class PkField:
@@ -24,14 +26,14 @@ class TimeRegisterFields:
     """
     created_at: Mapped[datetime] = mapped_column(
         DateTime, 
-        server_default=func.timezone('UTC', func.now())
+        server_default=func.timezone(str(TIMEZONE), func.now())
     )
     # `created_at` field uses SQLAlchemy's `func.timezone('UTC', func.now())` to set the default value
     # to the current time in UTC. This ensures that when a record is created, it gets the correct UTC timestamp.
 
     updated_at: Mapped[datetime] = mapped_column(
         DateTime, 
-        server_default=func.timezone('UTC', func.now()), 
+        server_default=func.timezone(str(TIMEZONE), func.now()), 
         onupdate=lambda: datetime.now(timezone.utc)
     )
     # `updated_at` field is automatically set to the current time in UTC on insert
@@ -93,3 +95,8 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         return {key: getattr(self, key) for key in self.get_column_names()}
         # Iterate over the column names obtained from `get_column_names()` and use `getattr`
         # to retrieve the value of each attribute on the instance.
+
+    def __repr__(self) -> str:
+        columns_string = ", ".join(f"{key}={getattr(self, key)}" for key in self.get_column_names())
+        return f"{type(self).__name__}({columns_string})"
+    

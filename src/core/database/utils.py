@@ -9,7 +9,7 @@ from sqlalchemy.engine.row import RowMapping
 from sqlalchemy import select
 
 from .database_set import session_factory
-from .base_model import BaseModel
+from ...utils.base_model import BaseModel
 
 
 def session_dependency(
@@ -60,7 +60,7 @@ def session_dependency(
                 Any: The result of the decorated function, after session management.
             """
             # Open a session and ensure it is closed after the function execution
-            async with session_factory.begin() as session:
+            async with session_factory() as session:
                 try:
                     # Inject the session into the function's keyword arguments
                     kwargs["session"] = session
@@ -128,7 +128,7 @@ def service_decorator(
     classmethod_: bool = True,
     provide_session: bool = True,
     auto_commit: bool = False,
-    auto_rollback: bool = True
+    auto_rollback: bool = True,
 ) -> Callable[[Callable[..., Awaitable[Any]]], Callable[..., Awaitable[Any]]]:
     """
     A decorator to add service functionality to methods, with conditional session 
@@ -157,8 +157,8 @@ def service_decorator(
         
         # Apply classmethod and session decorators
         @cls_decorator
-        @wraps(func)
         @session_decorator
+        @wraps(func)
         async def wrapper(*args, **kwargs):
             return await func(*args, **kwargs)
         
@@ -169,6 +169,16 @@ def service_decorator(
 
 class BaseService:
     model = BaseModel
+
+    @service_decorator()
+    async def filter(cls, session: AsyncSession, **kwargs) -> dict:
+
+        query = select(cls.model).filter_by(**kwargs)
+
+        db_resp = await session.execute(query)
+        response = db_resp.scalars().all()
+
+        return response
 
     @service_decorator(auto_commit=True)
     async def get_object_by_id(cls, object_id: int, session: AsyncSession) -> dict:
@@ -186,7 +196,7 @@ class BaseService:
         query = select(cls.model).filter_by(id=object_id)
         db_response = await session.execute(query)
 
-        if (obj := db_response.scalars().one_or_none()) is None:
+        if (obj := db_response.scalar_one_or_none()) is None:
             return {}
         else:
             return cls.model_to_dict(obj)

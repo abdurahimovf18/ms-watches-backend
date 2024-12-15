@@ -27,3 +27,6 @@ Thumbs.db
 # Ignore pipenv and poetry lock files (optional, if not using them)
 Pipfile.lock
 poetry.lock
+
+*.log
+logs/

@@ -2,7 +2,9 @@ from fastapi import FastAPI
 
 from . import loader as l
 
-from src.auth.models import UserModel
+from .auth.routers import router as auth_router
 
 
 app = FastAPI(lifespan=l.lifespan)
+
+app.include_router(router=auth_router)

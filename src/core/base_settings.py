@@ -1,3 +1,4 @@
+from datetime import timezone
 from pathlib import Path
 from pydantic_settings import BaseSettings
 
@@ -10,6 +11,8 @@ ENV_FILE_PATH = BASE_DIR / ".env"
 
 # DEBUG flag for enabling/disabling development mode features like detailed error messages
 DEBUG = True
+
+TIMEZONE = timezone.utc
 
 
 class Settings(BaseSettings):
@@ -33,12 +36,6 @@ class Settings(BaseSettings):
         print(settings.SECRET_KEY)  # Access the secret key from the settings
         ```
     """
-    
-    #######################
-    # application secrets #
-    #######################
-
-    SECRET_KEY: str
 
     ######################
     # postgresql secrets #
@@ -49,6 +46,28 @@ class Settings(BaseSettings):
     DB_HOST: str 
     DB_PORT: int
     DB_NAME: str
+
+    ############################
+    # Authentification secrets #
+    ############################
+
+    SECRET_KEY: str 
+    
+    JWT_ALGORITHM: str 
+    JWT_EXPIRE_MINUTE: int 
+    
+    JWT_REFRESH_EXPIRE_DAYS: int 
+    ISSUER: str
+    AUDIENCE: str
+
+    ################
+    # Cache secrets#
+    ################
+
+    REDIS_HOST: str
+    REDIS_PORT: int
+    REDIS_DB: int
+    
 
     class Config:
         """
