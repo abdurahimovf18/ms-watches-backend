@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, UniqueConstraint, Index, text, Boolean
 
 from src.utils.base_model import BaseModel
@@ -11,9 +11,11 @@ class UsersModel(BaseModel):
     EMAIL_MAX_LENGTH = 255
     PASSWORD_MAX_LENGTH = 255
 
-    is_active: Mapped[bool] = mapped_column(Boolean, server_default=text('true'), nullable=False)
-    is_staff: Mapped[bool] = mapped_column(Boolean, server_default=text('false'), nullable=False)
-    is_superuser: Mapped[bool] = mapped_column(Boolean, server_default=text('false'), nullable=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    is_staff: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    is_superuser: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+
+    liked_watches = relationship("LikesModel", back_populates="liked_user", cascade="all, delete-orphan")
 
     first_name: Mapped[str] = mapped_column(String(NAME_MAX_LENGTH), nullable=False)
     last_name: Mapped[str] = mapped_column(String(NAME_MAX_LENGTH), nullable=False)
