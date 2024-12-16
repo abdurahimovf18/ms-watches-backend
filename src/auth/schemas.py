@@ -16,7 +16,9 @@ class UserRegisterSchema(UserLoginSchema):
 
 
 class UserDbSchema(UserRegisterSchema, BaseDbSchema):
-    pass
+    is_active: bool
+    is_superuser: bool
+    is_staff: bool
 
 
 class UserRegisterResponseSchema(BaseResponseSchema):
