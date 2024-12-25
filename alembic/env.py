@@ -3,7 +3,7 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from src.core.database import METADATA
+from src.core.database.migration_models import METADATA_SEQ
 from src.core.database.database_settings import DB_SYNC_URL
 
 from alembic import context
@@ -23,7 +23,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = [METADATA, ]
+target_metadata = METADATA_SEQ
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
