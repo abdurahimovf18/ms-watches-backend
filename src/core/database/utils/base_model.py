@@ -1,15 +1,18 @@
 from datetime import datetime, timezone
 from typing import Sequence
-from functools import lru_cache
 
 import re
+
+from pydantic import BaseModel as PydBaseModel
 
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, declared_attr
 from sqlalchemy import Integer, DateTime, func, inspect
 
 from src.core.base_settings import TIMEZONE
+from src.core.utils.cache import cache
 
 from ..database_set import default_metadata
+from src.core.base_settings import DB_ID_TYPE
 
 
 class PkField:
@@ -17,7 +20,7 @@ class PkField:
     A base mixin class that provides an `id` primary key field.
     This class can be inherited to add the primary key field to models.
     """
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, unique=True)
+    id: Mapped[int] = mapped_column(DB_ID_TYPE, primary_key=True, unique=True)
     # `mapped_column` is used to define the SQLAlchemy column. Here, `Integer` is the column type
     # and the field is marked as the primary key and unique.
 
@@ -76,7 +79,7 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         return snake_case_name.removesuffix("_model")
 
     @classmethod
-    @lru_cache(maxsize=1)
+    @cache
     def get_column_names(cls):
         """
         Retrieves the column names of the model by inspecting the class's columns.
@@ -86,10 +89,10 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
             cls (type): The class object, automatically passed by SQLAlchemy.
 
         Returns:
-            list: A list of column names for the model.
+            tuple: A tuple of column names for the model.
         """
         inspector = inspect(cls)  # Inspect the model to get information about its columns.
-        return list(inspector.columns.keys())  # Return the list of column names.
+        return tuple(inspector.columns.keys())  # Return the tuple of column names.
 
     def as_dict(self) -> dict:
         """
@@ -108,23 +111,24 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         return f"{type(self).__name__}({columns_string})"
     
     @classmethod
-    def get_columns(cls, fields: Sequence[str] | None = None) -> list:
+    @cache
+    def get_columns(cls, fields: Sequence[str] | None = None) -> tuple:
         """
         Retrieve the database columns for the model class.
 
         This method uses SQLAlchemy's `inspect` to access the model's mapped columns. 
         If no specific fields are provided, it returns all columns defined in the model.
-        If a list of field names is provided, it filters and returns only those columns
+        If a tuple of field names is provided, it filters and returns only those columns
         that match the specified names.
 
         Args:
             fields (Sequence[str] | None): 
-                An optional list of column names to filter. If `None`, all columns
+                An optional tuple of column names to filter. If `None`, all columns
                 from the model are returned.
 
         Returns:
-            list: 
-                A list of SQLAlchemy column objects. If `fields` is provided, the list 
+            tuple: 
+                A tuple of SQLAlchemy column objects. If `fields` is provided, the tuple 
                 contains only the columns matching the specified field names. Otherwise, 
                 it includes all columns of the model.
 
@@ -148,5 +152,11 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         if fields is None:
             return mapper.c.values()
         
-        return [val for key, val in mapper.c.items() if key in fields]
+        return tuple(val for key, val in mapper.c.items() if key in fields)
+    
+
+    @classmethod
+    @cache
+    def cols_from_pyd(cls, pyd_model: PydBaseModel) -> tuple:
+        return cls.get_columns(tuple(pyd_model.model_fields))
     

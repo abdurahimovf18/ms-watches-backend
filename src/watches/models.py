@@ -1,9 +1,10 @@
 from decimal import Decimal
-from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
-from sqlalchemy import String, Integer, Text, ForeignKey, DECIMAL, text, Enum, CheckConstraint
-
+from sqlalchemy.orm import Mapped, mapped_column, relationship, validates, declared_attr
+from sqlalchemy import String, Text, ForeignKey, DECIMAL, text, Enum, CheckConstraint, Index
 from src.core.database.utils.base_model import BaseModel
-from .v1.constants import WatchStatus
+from src.core.base_settings import DB_ID_TYPE
+from .constants import WatchStatus, WatchImageType
+
 
 
 class WatchesModel(BaseModel):
@@ -14,28 +15,25 @@ class WatchesModel(BaseModel):
     discount_percent: Mapped[Decimal] = mapped_column(
         DECIMAL(5, 2), nullable=False, server_default=text("0.00")
     )
-
-    # Relationships
-    descriptions: Mapped[list["DescriptionsModel"]] = relationship(
-        "DescriptionsModel", back_populates="watch"
-    )
-    images: Mapped[list["WatchesImagesModel"]] = relationship(
-        "WatchesImagesModel", back_populates="watch"
-    )
-    liked_users: Mapped[list["LikesModel"]] = relationship(
-        "LikesModel", back_populates="watch"
-    )
     status: Mapped[WatchStatus] = mapped_column(Enum(WatchStatus), server_default="INACTIVE")
 
-    brands: Mapped[list["BrandsToWatchesModel"]] = relationship(
-        "BrandsToWatchesModel", back_populates="watch"
+    # Relationships
+    descriptions: Mapped[list] = relationship(
+        "WatchDescriptionsModel", back_populates="watch"
     )
-    tags: Mapped[list["TagsToWatchesModel"]] = relationship(
-        "TagsToWatchesModel", back_populates="watch"
-    )
-    collections: Mapped[list["CollectionsToWatchesModel"]] = relationship(
-        "CollectionsToWatchesModel", back_populates="watch"
-    )
+    # liked_users: Mapped[list] = relationship(
+    #     "LikesModel", back_populates="watch"
+    # )
+
+    # brands: Mapped[list] = relationship(
+    #     "BrandsToWatchesModel", back_populates="watch"
+    # )
+    # tags: Mapped[list] = relationship(
+    #     "TagsToWatchesModel", back_populates="watch"
+    # )
+    # collections: Mapped[list] = relationship(
+    #     "CollectionsToWatchesModel", back_populates="watch"
+    # )
 
     __table_args__ = (
         CheckConstraint("price >= 0", name="check_positive_price"),
@@ -73,16 +71,36 @@ class WatchesModel(BaseModel):
 
 class WatchRelatedModel(BaseModel):
     __abstract__ = True
+
     watch_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
     )
 
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
 
-class DescriptionsModel(WatchRelatedModel):
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
+
+        
+class WatchDescriptionsModel(WatchRelatedModel):
     content: Mapped[str] = mapped_column(Text, nullable=False)
     watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="descriptions")
 
 
-class WatchesImagesModel(WatchRelatedModel):
+class WatchImagesModel(WatchRelatedModel):
+    image_type: Mapped[WatchImageType] = mapped_column(Enum(WatchImageType), nullable=False, default="DEFAULT")
     image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
-    watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="images")
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f"{cls.__tablename__}_image_type_index", "image_type"),
+            Index(f"{cls.__tablename__}_composite_index", "watch_id", "image_type"),
+        )
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
+

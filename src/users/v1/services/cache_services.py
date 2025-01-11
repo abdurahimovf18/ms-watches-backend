@@ -1,7 +1,7 @@
 from src.core.cache import cache
 
 
-class UserCacheServices(cache.BaseCacheService):
+class UserCacheServices(cache.CacheService):
 
     @cache.cache_method(expiry=15 * 60)
     async def get_user_by_id(cls, user_id: int) -> dict:

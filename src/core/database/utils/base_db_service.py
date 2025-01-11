@@ -1,9 +1,14 @@
-from sqlalchemy.engine.row import RowMapping
 from typing import Any
+
+from sqlalchemy.engine.row import RowMapping
+from .base_model import BaseModel
+from pydantic import BaseModel as PydBaseModel
+
+from src.core.utils.cache import cache
 
 
 class BaseDbService:
-    model = ...
+    model = BaseModel
 
     @staticmethod
     def model_to_dict(model: Any) -> dict:
@@ -32,7 +37,8 @@ class BaseDbService:
         return dict(row)
 
     @classmethod
-    def model_cols(cls, *args, **kwargs):
+    @cache
+    def model_cols(cls, model: BaseModel | None = None, *args, **kwargs) -> tuple:
         """
         Retrieve columns for the associated model based on provided arguments.
 
@@ -46,7 +52,7 @@ class BaseDbService:
             **kwargs: Keyword arguments whose keys represent column names (values are ignored).
 
         Returns:
-            list: A list of column objects corresponding to the provided column names 
+            tuple: A tuple of column objects corresponding to the provided column names 
                 (from positional arguments and keyword argument keys).
 
         Raises:
@@ -68,5 +74,13 @@ class BaseDbService:
             >>> UserService.model_cols("id", email="john@example.com")
             [User.id, User.email]
         """
+        model = model or cls.model
         fields = (*args, *kwargs.keys()) or None
-        return cls.model.get_columns(fields)
+
+        return model.get_columns(fields)
+
+    @classmethod
+    @cache
+    def cols_from_pyd(cls, source: Any, schema: PydBaseModel):
+        keys = schema.model_fields.keys()
+        return [getattr(source, key) for key in keys if hasattr(source, key)]

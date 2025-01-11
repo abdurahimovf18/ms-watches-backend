@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 
 from .services.token_services import get_data_from_jwt
-from .services import UserCacheServices
+from .services import cache
 from .schemas import UserDbSchema
 
 
@@ -39,7 +39,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
         )
 
     # Retrieve the user from cache or database
-    user = await UserCacheServices.get_user_by_id(user_id=user_id)
+    user = await cache.get_user_by_id(user_id=user_id)
 
     if not user:
         raise HTTPException(

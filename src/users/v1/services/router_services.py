@@ -1,11 +1,11 @@
 from fastapi import HTTPException, status
 
+from sqlalchemy.exc import IntegrityError, NoResultFound
 from loguru import logger
 
 from .token_services import get_jwt_token, hash_password, verify_password
 
-from . import UserDbServices
-from . import UserCacheServices
+from . import db, cache
 
 
 from ..schemas import (
@@ -20,38 +20,45 @@ async def register_user(user: UserRegisterSchema) -> UserRegisterResponseSchema:
     user.password = hash_password(user.password)
 
     try:
-        response = await UserDbServices.save_user(new_user=user)
+        response: dict = await db.save_user(new_user=user)
+    except IntegrityError as exc:
+        logger.info(str(exc))
+        raise HTTPException(status.HTTP_409_CONFLICT, "User already exists")     
     except Exception as exc:
-        logger.critical(str(exc))
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Server error")
-
-    if response: 
-        return UserRegisterResponseSchema(ok=True, detail="User created successfully")
-
-    raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="User already exists")
+        logger.error(f"Error occured while registering user: {exc!s}")
+        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "Internal server error")
+    
+    return UserRegisterResponseSchema(**response)
 
 
 async def login_user(user: UserLoginSchema) -> UserLoginResponseSchema:
-    
-    user_data = await UserDbServices.get_user_by_email(email=user.email)
+    try:
+        # Fetch user data by email
+        user_data: dict = await db.get_user_by_email(email=user.email)
+    except NoResultFound:
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Email or Password is incorrect")
+    except Exception as exc:
+        logger.error(f"Error occurred while fetching user: {exc!s}")
+        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "Internal server error")
 
-    if not user_data:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Email or Password is incorrect")
-    
-    is_password_valid= verify_password(user.password, user_data["password"])
+    # Verify password
+    if not verify_password(user.password, user_data["password"]):
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Email or Password is incorrect")
 
-    if not is_password_valid:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Email or Password is incorrect")
-
-    token_data = {
-        "sub": str(user_data["id"])
+    # Check if the user's account is active
+    is_user_active = user_data.get("is_active")
+    if not is_user_active:
+        raise HTTPException(status.HTTP_403_FORBIDDEN, "Account is not active")
+   
+    # Prepare JWT token payload
+    token_payload = {
+        "sub": str(user_data.get("id"))
     }
 
-    access_token = get_jwt_token(data=token_data)
-
+    # Generate JWT token
+    access_token = get_jwt_token(data=token_payload)
     if access_token is None:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Server error")
+        logger.error("Failed to generate JWT token")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error")
 
-    resp = UserLoginResponseSchema(token=access_token)
-    
-    return resp
+    return UserLoginResponseSchema(token=access_token)

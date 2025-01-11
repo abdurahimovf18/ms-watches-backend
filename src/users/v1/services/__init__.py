@@ -1,5 +1,5 @@
-from .cache_services import UserCacheServices
-from .db_services import UserDbServices
+from .cache_services import UserCacheServices as cache
+from .db_services import UserDbServices as db
 
 
-UserCacheServices.set_db_services(UserDbServices)
+cache.set_db_services(db)

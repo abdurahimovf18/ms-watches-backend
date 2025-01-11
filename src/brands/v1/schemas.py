@@ -1,7 +1,7 @@
 from fastapi import UploadFile
 from pydantic import BaseModel
 
-from src.utils.schemas import BaseDbSchema
+from src.utils.schemas import BaseDbSchema, BaseCreateSchema
 
 
 class BrandCreateSchema(BaseModel):
@@ -17,8 +17,5 @@ class BrandDbSchema(BaseDbSchema, BrandCreateSchema):
     images: list[str]
 
 
-class BrandCreateResponseSchema(BaseDbSchema, BrandCreateSchema):
+class BrandCreateResponseSchema(BrandCreateSchema, BaseCreateSchema):
     pass
-
-
-# limit: int = 3, recent: bool = True, popular: bool = True,

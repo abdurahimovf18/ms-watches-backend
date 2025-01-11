@@ -1,234 +1,82 @@
-2024-12-25 16:15:26 | INFO | Application shut down | {}
-2024-12-25 16:15:28 | INFO | Application run | {}
-2024-12-25 16:16:13 | INFO | Application shut down | {}
-2024-12-25 16:16:15 | INFO | Application run | {}
-2024-12-25 17:51:46 | INFO | Application run | {}
-2024-12-25 17:56:28 | ERROR | JWT decoding error: bad_signature:  | {}
-2024-12-25 17:57:05 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 17:59:38 | INFO | Application shut down | {}
-2024-12-25 17:59:40 | INFO | Application run | {}
-2024-12-25 17:59:41 | INFO | Application shut down | {}
-2024-12-25 17:59:43 | INFO | Application run | {}
-2024-12-25 17:59:49 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:06:12 | INFO | Application shut down | {}
-2024-12-25 18:06:14 | INFO | Application run | {}
-2024-12-25 18:06:20 | INFO | Application shut down | {}
-2024-12-25 18:06:22 | INFO | Application run | {}
-2024-12-25 18:06:24 | INFO | Application shut down | {}
-2024-12-25 18:06:26 | INFO | Application run | {}
-2024-12-25 18:06:31 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:06:54 | INFO | Application shut down | {}
-2024-12-25 18:06:56 | INFO | Application run | {}
-2024-12-25 18:07:00 | INFO | Application shut down | {}
-2024-12-25 18:07:01 | INFO | Application run | {}
-2024-12-25 18:07:08 | INFO | Application shut down | {}
-2024-12-25 18:07:10 | INFO | Application run | {}
-2024-12-25 18:07:17 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:08:41 | INFO | Application shut down | {}
-2024-12-25 18:08:43 | INFO | Application run | {}
-2024-12-25 18:08:45 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:13:00 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:13:48 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:14:39 | INFO | Application shut down | {}
-2024-12-25 18:14:41 | INFO | Application run | {}
-2024-12-25 18:14:43 | INFO | Application shut down | {}
-2024-12-25 18:14:44 | INFO | Application run | {}
-2024-12-25 18:14:45 | INFO | Application shut down | {}
-2024-12-25 18:14:47 | INFO | Application run | {}
-2024-12-25 18:14:52 | INFO | Application shut down | {}
-2024-12-25 18:14:54 | INFO | Application run | {}
-2024-12-25 18:14:57 | INFO | Application shut down | {}
-2024-12-25 18:14:59 | INFO | Application run | {}
-2024-12-25 18:15:08 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:17:39 | INFO | Application shut down | {}
-2024-12-25 18:18:06 | INFO | Application run | {}
-2024-12-25 18:18:34 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:19:51 | INFO | Application shut down | {}
-2024-12-25 18:19:58 | INFO | Application run | {}
-2024-12-25 18:20:01 | INFO | Application shut down | {}
-2024-12-25 18:20:03 | INFO | Application run | {}
-2024-12-25 18:20:53 | INFO | Application run | {}
-2024-12-25 18:20:55 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:21:19 | INFO | Application shut down | {}
-2024-12-25 18:21:21 | INFO | Application run | {}
-2024-12-25 18:21:37 | INFO | Application shut down | {}
-2024-12-25 18:21:38 | INFO | Application run | {}
-2024-12-25 18:26:32 | INFO | Application shut down | {}
-2024-12-25 18:26:34 | INFO | Application run | {}
-2024-12-25 18:26:53 | INFO | Application shut down | {}
-2024-12-25 18:26:54 | INFO | Application run | {}
-2024-12-25 18:26:57 | INFO | Application shut down | {}
-2024-12-25 18:26:58 | INFO | Application run | {}
-2024-12-25 18:28:08 | INFO | Application shut down | {}
-2024-12-25 18:28:10 | INFO | Application run | {}
-2024-12-25 18:28:13 | INFO | Application shut down | {}
-2024-12-25 18:28:14 | INFO | Application run | {}
-2024-12-25 18:29:44 | INFO | Application shut down | {}
-2024-12-25 18:29:46 | INFO | Application run | {}
-2024-12-25 18:30:34 | INFO | Application shut down | {}
-2024-12-25 18:30:36 | INFO | Application run | {}
-2024-12-25 18:30:48 | INFO | Application shut down | {}
-2024-12-25 18:30:50 | INFO | Application run | {}
-2024-12-25 18:31:03 | ERROR | JWT decoding error: Invalid header string: 'utf-8' codec can't decode byte 0xb2 in position 20: invalid start byte:  | {}
-2024-12-25 18:40:51 | INFO | Application shut down | {}
-2024-12-25 18:44:31 | INFO | Application run | {}
-2024-12-25 18:44:41 | ERROR | JWT encoding error: PyJWT.encode() got an unexpected keyword argument 'header' | {}
-2024-12-25 18:45:49 | INFO | Application shut down | {}
-2024-12-25 18:45:50 | INFO | Application run | {}
-2024-12-25 18:46:20 | INFO | Application shut down | {}
-2024-12-25 18:46:22 | INFO | Application run | {}
-2024-12-25 18:47:14 | INFO | Application shut down | {}
-2024-12-25 18:47:16 | INFO | Application run | {}
-2024-12-25 18:47:18 | INFO | Application run | {}
-2024-12-25 18:49:25 | INFO | Application shut down | {}
-2024-12-25 18:49:26 | INFO | Application run | {}
-2024-12-25 18:49:45 | INFO | Application shut down | {}
-2024-12-25 18:49:46 | INFO | Application run | {}
-2024-12-25 18:51:45 | INFO | Application shut down | {}
-2024-12-25 18:51:46 | INFO | Application run | {}
-2024-12-25 18:52:48 | INFO | Application shut down | {}
-2024-12-25 18:52:49 | INFO | Application run | {}
-2024-12-25 18:56:55 | INFO | Application shut down | {}
-2024-12-25 18:56:57 | INFO | Application run | {}
-2024-12-25 18:57:04 | INFO | Application shut down | {}
-2024-12-25 18:57:06 | INFO | Application run | {}
-2024-12-25 18:58:26 | ERROR | Failed to decode JWT token: Subject must be a string | {}
-2024-12-25 19:00:07 | INFO | Application shut down | {}
-2024-12-25 19:00:09 | INFO | Application run | {}
-2024-12-25 19:00:35 | INFO | Application shut down | {}
-2024-12-25 19:00:37 | INFO | Application run | {}
-2024-12-25 19:00:52 | INFO | Application shut down | {}
-2024-12-25 19:00:54 | INFO | Application run | {}
-2024-12-25 19:00:55 | INFO | Application run | {}
-2024-12-25 19:01:55 | INFO | Application shut down | {}
-2024-12-25 19:01:57 | INFO | Application run | {}
-2024-12-25 19:01:58 | INFO | Application shut down | {}
-2024-12-25 19:02:03 | INFO | Application run | {}
-2024-12-25 19:02:04 | INFO | Application run | {}
-2024-12-25 19:02:17 | INFO | Application shut down | {}
-2024-12-25 19:02:19 | INFO | Application run | {}
-2024-12-25 19:02:24 | INFO | Application shut down | {}
-2024-12-25 19:02:25 | INFO | Application run | {}
-2024-12-25 19:02:26 | INFO | Application shut down | {}
-2024-12-25 19:02:28 | INFO | Application run | {}
-2024-12-25 19:02:46 | INFO | Application shut down | {}
-2024-12-25 19:02:48 | INFO | Application run | {}
-2024-12-25 19:03:48 | INFO | Application shut down | {}
-2024-12-25 19:12:04 | INFO | Application run | {}
-2024-12-25 19:12:05 | INFO | Application shut down | {}
-2024-12-25 19:12:15 | INFO | Application run | {}
-2024-12-25 19:12:16 | INFO | Application shut down | {}
-2024-12-25 19:12:18 | INFO | Application run | {}
-2024-12-25 19:12:28 | INFO | Application shut down | {}
-2024-12-25 19:12:30 | INFO | Application run | {}
-2024-12-25 19:12:33 | INFO | Application shut down | {}
-2024-12-25 19:12:34 | INFO | Application run | {}
-2024-12-25 19:12:38 | INFO | Application shut down | {}
-2024-12-25 19:12:41 | INFO | Application run | {}
-2024-12-25 19:12:42 | INFO | Application shut down | {}
-2024-12-25 19:12:44 | INFO | Application run | {}
-2024-12-25 19:12:45 | INFO | Application shut down | {}
-2024-12-25 19:12:47 | INFO | Application run | {}
-2024-12-25 19:12:48 | INFO | Application run | {}
-2024-12-25 19:12:52 | INFO | Application shut down | {}
-2024-12-25 19:12:54 | INFO | Application run | {}
-2024-12-25 19:13:12 | INFO | Application shut down | {}
-2024-12-25 19:13:14 | INFO | Application run | {}
-2024-12-25 19:14:12 | INFO | Application run | {}
-2024-12-25 19:14:16 | INFO | Application shut down | {}
-2024-12-25 19:14:18 | INFO | Application run | {}
-2024-12-25 19:14:21 | INFO | Application shut down | {}
-2024-12-25 19:14:23 | INFO | Application run | {}
-2024-12-25 19:14:26 | INFO | Application shut down | {}
-2024-12-25 19:14:28 | INFO | Application run | {}
-2024-12-25 19:15:18 | INFO | Application shut down | {}
-2024-12-25 19:15:20 | INFO | Application run | {}
-2024-12-25 19:15:21 | INFO | Application run | {}
-2024-12-25 19:15:23 | INFO | Application run | {}
-2024-12-25 19:16:10 | INFO | Application shut down | {}
-2024-12-25 19:16:12 | INFO | Application run | {}
-2024-12-25 19:16:13 | INFO | Application shut down | {}
-2024-12-25 19:16:15 | INFO | Application run | {}
-2024-12-25 19:20:18 | INFO | Application shut down | {}
-2024-12-25 19:20:24 | INFO | Application run | {}
-2024-12-25 19:20:53 | INFO | Application shut down | {}
-2024-12-25 19:20:55 | INFO | Application run | {}
-2024-12-25 19:20:59 | INFO | Application shut down | {}
-2024-12-25 19:21:01 | INFO | Application run | {}
-2024-12-25 19:22:55 | INFO | Application shut down | {}
-2024-12-25 19:22:57 | INFO | Application run | {}
-2024-12-25 19:23:00 | INFO | Application shut down | {}
-2024-12-25 19:23:02 | INFO | Application run | {}
-2024-12-25 19:23:59 | INFO | Application shut down | {}
-2024-12-25 19:24:01 | INFO | Application run | {}
-2024-12-25 19:24:42 | INFO | Application shut down | {}
-2024-12-25 19:24:44 | INFO | Application run | {}
-2024-12-25 19:26:34 | INFO | Application shut down | {}
-2024-12-25 19:26:36 | INFO | Application run | {}
-2024-12-25 19:26:36 | INFO | Application shut down | {}
-2024-12-25 19:26:38 | INFO | Application run | {}
-2024-12-25 19:26:52 | INFO | Application shut down | {}
-2024-12-25 19:26:54 | INFO | Application run | {}
-2024-12-25 19:27:31 | INFO | Application shut down | {}
-2024-12-25 19:27:37 | INFO | Application run | {}
-2024-12-25 19:27:44 | INFO | Application run | {}
-2024-12-25 19:28:02 | INFO | Application shut down | {}
-2024-12-25 19:28:04 | INFO | Application run | {}
-2024-12-25 19:30:21 | INFO | Application shut down | {}
-2024-12-25 19:30:22 | INFO | Application run | {}
-2024-12-25 19:30:24 | INFO | Application run | {}
-2024-12-25 19:30:26 | INFO | Application shut down | {}
-2024-12-25 19:30:33 | INFO | Application run | {}
-2024-12-25 19:30:34 | INFO | Application run | {}
-2024-12-25 19:31:11 | INFO | Application shut down | {}
-2024-12-25 19:31:34 | INFO | Application run | {}
-2024-12-25 19:31:37 | INFO | Application shut down | {}
-2024-12-25 19:31:39 | INFO | Application run | {}
-2024-12-25 19:31:39 | INFO | Application shut down | {}
-2024-12-25 19:31:41 | INFO | Application run | {}
-2024-12-25 19:31:43 | INFO | Application shut down | {}
-2024-12-25 19:31:46 | INFO | Application run | {}
-2024-12-25 19:31:48 | INFO | Application shut down | {}
-2024-12-25 19:31:55 | INFO | Application run | {}
-2024-12-25 19:32:18 | INFO | Application shut down | {}
-2024-12-25 19:32:20 | INFO | Application run | {}
-2024-12-25 19:32:22 | INFO | Application run | {}
-2024-12-25 19:32:50 | INFO | Application shut down | {}
-2024-12-25 19:32:53 | INFO | Application run | {}
-2024-12-25 19:32:54 | INFO | Application shut down | {}
-2024-12-25 19:32:56 | INFO | Application run | {}
-2024-12-25 19:32:58 | INFO | Application shut down | {}
-2024-12-25 19:32:59 | INFO | Application run | {}
-2024-12-25 19:33:13 | INFO | Application shut down | {}
-2024-12-25 19:33:15 | INFO | Application run | {}
-2024-12-25 19:33:19 | INFO | Application shut down | {}
-2024-12-25 19:33:20 | INFO | Application run | {}
-2024-12-25 19:33:22 | INFO | Application shut down | {}
-2024-12-25 19:33:24 | INFO | Application run | {}
-2024-12-25 19:33:35 | INFO | Application shut down | {}
-2024-12-25 19:33:47 | INFO | Application run | {}
-2024-12-25 19:33:53 | INFO | Application shut down | {}
-2024-12-25 19:33:55 | INFO | Application run | {}
-2024-12-25 19:34:16 | INFO | Application shut down | {}
-2024-12-25 19:34:18 | INFO | Application run | {}
-2024-12-25 19:34:19 | INFO | Application shut down | {}
-2024-12-25 19:34:21 | INFO | Application run | {}
-2024-12-25 19:34:22 | INFO | Application shut down | {}
-2024-12-25 19:34:24 | INFO | Application run | {}
-2024-12-25 19:34:26 | INFO | Application shut down | {}
-2024-12-25 19:34:28 | INFO | Application run | {}
-2024-12-25 19:35:42 | INFO | Application shut down | {}
-2024-12-25 19:35:49 | INFO | Application run | {}
-2024-12-25 19:35:50 | INFO | Application shut down | {}
-2024-12-25 19:35:52 | INFO | Application run | {}
-2024-12-25 19:35:58 | ERROR | Error during Redis set operation: BasicKeyCommands.set() got an unexpected keyword argument 'key' | {}
-2024-12-25 20:28:13 | INFO | Application shut down | {}
-2024-12-25 20:28:19 | INFO | Application run | {}
-2024-12-25 20:28:21 | WARNING | JWT token has expired. | {}
-2024-12-25 20:30:14 | INFO | Application shut down | {}
-2024-12-25 20:30:16 | INFO | Application run | {}
-2024-12-25 20:30:18 | INFO | Application shut down | {}
-2024-12-25 20:30:20 | INFO | Application run | {}
-2024-12-25 20:30:44 | INFO | Application shut down | {}
-2024-12-25 20:30:52 | INFO | Application run | {}
-2024-12-25 20:32:15 | INFO | Application shut down | {}
+2025-01-11 17:10:20 | INFO | Application run | {}
+2025-01-11 17:14:44 | INFO | Application shut down | {}
+2025-01-11 17:14:47 | INFO | Application run | {}
+2025-01-11 17:14:48 | INFO | Application shut down | {}
+2025-01-11 17:15:14 | INFO | Application run | {}
+2025-01-11 17:15:14 | INFO | Application shut down | {}
+2025-01-11 17:15:18 | INFO | Application run | {}
+2025-01-11 17:15:20 | INFO | Application shut down | {}
+2025-01-11 17:15:22 | INFO | Application run | {}
+2025-01-11 17:15:23 | INFO | Application shut down | {}
+2025-01-11 17:15:25 | INFO | Application run | {}
+2025-01-11 17:15:33 | INFO | Application shut down | {}
+2025-01-11 17:16:18 | INFO | Application run | {}
+2025-01-11 17:16:19 | INFO | Application shut down | {}
+2025-01-11 17:16:21 | INFO | Application run | {}
+2025-01-11 17:16:23 | INFO | Application shut down | {}
+2025-01-11 17:16:24 | INFO | Application run | {}
+2025-01-11 17:16:26 | INFO | Application shut down | {}
+2025-01-11 17:16:28 | INFO | Application run | {}
+2025-01-11 17:16:33 | INFO | Application shut down | {}
+2025-01-11 17:16:36 | INFO | Application run | {}
+2025-01-11 17:16:38 | INFO | Application run | {}
+2025-01-11 17:16:40 | INFO | Application run | {}
+2025-01-11 17:16:41 | INFO | Application shut down | {}
+2025-01-11 17:16:42 | INFO | Application run | {}
+2025-01-11 17:16:43 | INFO | Application shut down | {}
+2025-01-11 17:16:47 | INFO | Application run | {}
+2025-01-11 17:16:50 | INFO | Application shut down | {}
+2025-01-11 17:16:51 | INFO | Application run | {}
+2025-01-11 17:16:57 | INFO | Application shut down | {}
+2025-01-11 17:16:59 | INFO | Application run | {}
+2025-01-11 17:17:01 | INFO | Application run | {}
+2025-01-11 17:17:01 | INFO | Application shut down | {}
+2025-01-11 17:17:03 | INFO | Application run | {}
+2025-01-11 17:17:04 | INFO | Application shut down | {}
+2025-01-11 17:17:06 | INFO | Application run | {}
+2025-01-11 17:17:53 | INFO | Application shut down | {}
+2025-01-11 17:17:54 | INFO | Application run | {}
+2025-01-11 17:17:56 | INFO | Application shut down | {}
+2025-01-11 17:17:58 | INFO | Application run | {}
+2025-01-11 17:17:59 | INFO | Application shut down | {}
+2025-01-11 17:18:00 | INFO | Application run | {}
+2025-01-11 17:18:02 | INFO | Application shut down | {}
+2025-01-11 17:18:05 | INFO | Application run | {}
+2025-01-11 17:18:06 | INFO | Application shut down | {}
+2025-01-11 17:18:08 | INFO | Application run | {}
+2025-01-11 17:18:10 | INFO | Application shut down | {}
+2025-01-11 17:18:12 | INFO | Application run | {}
+2025-01-11 17:18:14 | INFO | Application shut down | {}
+2025-01-11 17:18:16 | INFO | Application run | {}
+2025-01-11 17:18:16 | INFO | Application shut down | {}
+2025-01-11 17:18:18 | INFO | Application run | {}
+2025-01-11 17:18:24 | INFO | Application shut down | {}
+2025-01-11 17:18:26 | INFO | Application run | {}
+2025-01-11 17:18:32 | INFO | Application shut down | {}
+2025-01-11 17:18:34 | INFO | Application run | {}
+2025-01-11 17:18:51 | INFO | Application shut down | {}
+2025-01-11 17:19:08 | INFO | Application run | {}
+2025-01-11 17:19:14 | INFO | Application shut down | {}
+2025-01-11 17:19:31 | INFO | Application run | {}
+2025-01-11 17:19:33 | INFO | Application run | {}
+2025-01-11 17:19:41 | INFO | Application shut down | {}
+2025-01-11 17:19:43 | INFO | Application run | {}
+2025-01-11 17:19:43 | INFO | Application shut down | {}
+2025-01-11 17:19:45 | INFO | Application run | {}
+2025-01-11 17:19:50 | INFO | Application shut down | {}
+2025-01-11 17:19:52 | INFO | Application run | {}
+2025-01-11 17:19:56 | INFO | Application shut down | {}
+2025-01-11 17:19:57 | INFO | Application run | {}
+2025-01-11 17:19:58 | INFO | Application shut down | {}
+2025-01-11 17:19:59 | INFO | Application run | {}
+2025-01-11 17:20:01 | INFO | Application run | {}
+2025-01-11 17:20:11 | INFO | Application shut down | {}
+2025-01-11 17:20:14 | INFO | Application run | {}
+2025-01-11 17:20:15 | INFO | Application shut down | {}
+2025-01-11 17:20:16 | INFO | Application run | {}
+2025-01-11 17:20:19 | INFO | Application shut down | {}
+2025-01-11 17:20:21 | INFO | Application run | {}
+2025-01-11 17:20:24 | INFO | Application shut down | {}
+2025-01-11 17:20:26 | INFO | Application run | {}
+2025-01-11 18:42:17 | INFO | Application run | {}
+2025-01-11 19:48:28 | INFO | Application shut down | {}

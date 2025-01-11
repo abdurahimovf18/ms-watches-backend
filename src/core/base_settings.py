@@ -2,6 +2,7 @@ from datetime import timezone
 from pathlib import Path
 from pydantic_settings import BaseSettings
 
+from sqlalchemy import BigInteger
 
 # BASE_DIR points to the root directory of the project (3 levels up from the current file)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -16,6 +17,7 @@ TIMEZONE = timezone.utc
 
 ALLOWED_HOSTS: list[str] = ["http://localhost:3000", "http://0.0.0.0:3000", "http://127.0.0.1:3000"]
 
+DB_ID_TYPE = BigInteger
 
 class Settings(BaseSettings):
     """

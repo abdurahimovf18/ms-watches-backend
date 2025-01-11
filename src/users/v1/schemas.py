@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from pydantic_extra_types.phone_numbers import PhoneNumber
 
-from src.utils.schemas import BaseDbSchema
+from src.utils.schemas import BaseCreateSchema, BaseDbSchema
 
 
 class UserLoginSchema(BaseModel):
@@ -21,8 +21,10 @@ class UserDbSchema(UserRegisterSchema, BaseDbSchema):
     is_staff: bool
 
 
-class UserRegisterResponseSchema(BaseModel):
-    pass
+class UserRegisterResponseSchema(BaseCreateSchema):
+    email: EmailStr
+    first_name: str
+    last_name: str
 
 
 class UserLoginResponseSchema(BaseModel):

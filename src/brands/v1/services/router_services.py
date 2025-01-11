@@ -1,11 +1,17 @@
 from fastapi import status, HTTPException
 
-from .db_services import BrandServices
+from sqlalchemy.exc import IntegrityError
+from loguru import logger
+
+from .db_services import BrandDbServices
 from ..schemas import BrandCreateSchema, BrandCreateResponseSchema
 
 
 async def create_brand(brand: BrandCreateSchema) -> BrandCreateResponseSchema:
-    resp = await BrandServices.create_brand(new_brand=brand)
-
-
-    return BrandCreateResponseSchema(resp)
+    try:
+        resp: dict = await BrandDbServices.create_brand(new_brand=brand)
+    except IntegrityError as exc:
+        logger.info(str(exc))
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=f'Brand "{brand.name}" already exists')    
+    
+    return BrandCreateResponseSchema(**resp)

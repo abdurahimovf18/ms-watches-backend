@@ -11,12 +11,12 @@ from .base_cache_service import BaseCacheService
 
 class CacheExtendedInstance(CacheInstanceAbs):
 
-    BaseCacheService = BaseCacheService
+    CacheService = BaseCacheService
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.BaseCacheService.set_cache_instance(self)
+        self.CacheService.set_cache_instance(self)
 
     """
     A class that extends CacheInstanceAbs to provide caching functionality 

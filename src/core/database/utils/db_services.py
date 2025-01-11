@@ -106,7 +106,7 @@ class DbServices:
                 return await func(*args, **kwargs)
             except Exception as exc:
                 # Catch and log the exception using loguru
-                logger.exception(f"An error occurred in {func.__name__}: {exc}")
+                logger.exception(f"Database exception {func.__name__}: {exc}")
                 raise exc  # Re-raise the exception after logging it
 
         return wrapper
