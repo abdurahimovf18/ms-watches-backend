@@ -4,16 +4,15 @@ from sqlalchemy import (
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from src.core.database.database_set import engine
 from src.core.database.utils.base_model import BaseModel
+from .constants import BrandImageTypes
 
 
 class BrandsModel(BaseModel):
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
-    
-    # associated_watches: Mapped[list["BrandsToWatchesModel"]] = relationship(
-    #     "BrandsToWatchesModel", back_populates="brand", cascade="all, delete-orphan"
-    # )
+
 
 
 class BrandImagesModel(BaseModel):

@@ -1,23 +1,38 @@
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship, Mapped, mapped_column
+from sqlalchemy import ForeignKey, Index
+from sqlalchemy.orm import relationship, Mapped, mapped_column, declared_attr
 
 from src.core.base_settings import DB_ID_TYPE
+from .utils.base_model import BaseModel
+from .utils.relationship import create_m2m, ModelArgs, RelationshipArgs
 
 from src.users.models import UsersModel
 from src.watches.models import WatchesModel
 from src.watches.models import WatchImagesModel
 from src.watches.models import WatchDescriptionsModel
-from src.watches.models import WatchRelatedModel
+from src.countries.models import CountriesModel
 from src.brands.models import BrandsModel
 from src.brands.models import BrandImagesModel
 from src.tags.models import TagsModel
 from src.collections.models import CollectionsModel
 
 
-class BrandsToWatchesModel(WatchRelatedModel):
+class BrandsToWatchesModel(BaseModel):
     brand_id: Mapped[int] = mapped_column(
         DB_ID_TYPE, ForeignKey("brands.id", ondelete="CASCADE")
     )
+
+    watch_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+    )
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
+
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
 
     # Relationships
     # brand: Mapped["BrandsModel"] = relationship(
@@ -28,10 +43,23 @@ class BrandsToWatchesModel(WatchRelatedModel):
     # )
 
 
-class TagsToWatchesModel(WatchRelatedModel):
+class TagsToWatchesModel(BaseModel):
     tag_id: Mapped[int] = mapped_column(
         DB_ID_TYPE, ForeignKey("tags.id", ondelete="CASCADE"), primary_key=True
     )
+
+    watch_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+    )
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
+
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
 
     # Relationships
     # watch: Mapped["WatchesModel"] = relationship(
@@ -42,10 +70,23 @@ class TagsToWatchesModel(WatchRelatedModel):
     # )
 
 
-class CollectionsToWatchesModel(WatchRelatedModel):
+class CollectionsToWatchesModel(BaseModel):
     collection_id: Mapped[int] = mapped_column(
         DB_ID_TYPE, ForeignKey("collections.id", ondelete="CASCADE")
     )
+
+    watch_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+    )
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
+
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
 
     # watch: Mapped["WatchesModel"] = relationship(
     #     "WatchesModel", back_populates="collections"
@@ -55,9 +96,55 @@ class CollectionsToWatchesModel(WatchRelatedModel):
     # )
 
 
-class LikesModel(WatchRelatedModel):    
-    user_id: Mapped[int] = mapped_column(
-        DB_ID_TYPE, ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+# class LikesModel(BaseModel):    
+#     user_id: Mapped[int] = mapped_column(
+#         DB_ID_TYPE, ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+#     )
+
+#     watch_id: Mapped[int] = mapped_column(
+#         DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+#     )
+
+#     @declared_attr
+#     def __table_args__(cls):
+#         args = (
+#             Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+#         )
+
+#         parent_args = getattr(super(), "__table_args__", ()) or ()
+#         return parent_args + args
+#     user: Mapped["UsersModel"] = relationship("UsersModel", back_populates="liked_watches")
+#     watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="liked_users")
+
+LikesModel = create_m2m(
+    ModelArgs(
+        model=UsersModel,
+        relate_as_singular=True,
+    ),
+    ModelArgs(
+        model=WatchesModel,
+        relate_as_singular=True,
+        on_delete="CASCADE",
+    ),
+    RelationshipArgs(
+        relation_name="likes",
+        return_orm=True
     )
-    # user: Mapped["UsersModel"] = relationship("UsersModel", back_populates="liked_watches")
-    # watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="liked_users")
+)
+
+
+"""
+
+class ModelArgs(
+    model: BaseModel | Table,
+    foreign_key_type: Any = DB_ID_TYPE,
+    include_index: bool = False,
+    on_delete: str = "SET NULL",
+    nullable: bool = True,
+    unique: bool = False,
+    relate_as_singular: bool = False,
+    tablename: str | None = None,
+    back_populates: str | None = None
+)
+
+"""

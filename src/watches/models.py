@@ -21,6 +21,7 @@ class WatchesModel(BaseModel):
     descriptions: Mapped[list] = relationship(
         "WatchDescriptionsModel", back_populates="watch"
     )
+
     # liked_users: Mapped[list] = relationship(
     #     "LikesModel", back_populates="watch"
     # )
@@ -68,9 +69,10 @@ class WatchesModel(BaseModel):
             raise ValueError("Short description exceeds the 512 character limit.")
         return short_description
 
-
-class WatchRelatedModel(BaseModel):
-    __abstract__ = True
+        
+class WatchDescriptionsModel(BaseModel):
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="descriptions")
 
     watch_id: Mapped[int] = mapped_column(
         DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
@@ -85,13 +87,8 @@ class WatchRelatedModel(BaseModel):
         parent_args = getattr(super(), "__table_args__", ()) or ()
         return parent_args + args
 
-        
-class WatchDescriptionsModel(WatchRelatedModel):
-    content: Mapped[str] = mapped_column(Text, nullable=False)
-    watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="descriptions")
 
-
-class WatchImagesModel(WatchRelatedModel):
+class WatchImagesModel(BaseModel):
     image_type: Mapped[WatchImageType] = mapped_column(Enum(WatchImageType), nullable=False, default="DEFAULT")
     image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
 
@@ -101,6 +98,19 @@ class WatchImagesModel(WatchRelatedModel):
             Index(f"{cls.__tablename__}_image_type_index", "image_type"),
             Index(f"{cls.__tablename__}_composite_index", "watch_id", "image_type"),
         )
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
+    
+    watch_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+    )
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
+
         parent_args = getattr(super(), "__table_args__", ()) or ()
         return parent_args + args
 

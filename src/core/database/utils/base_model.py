@@ -58,6 +58,23 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
 
     __abstract__ = True
     metadata = default_metadata
+
+    @staticmethod
+    def get_table_name(name: str):
+        """
+        Dynamically generates the `__tablename__` for the model based on the class name.
+        Converts the class name to snake_case and removes the "Model" suffix if present.
+        For example:
+            - `UserModel` becomes `user`
+            - `WatchModel` becomes `watch`
+            - `SomeOtherClass` becomes `some_other_class`
+
+        Returns:
+            str: The dynamically generated table name in snake_case format.
+        """
+        snake_case_name = re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
+        # Remove "_model" suffix if present
+        return snake_case_name.removesuffix("_model")
     
     @declared_attr
     def __tablename__(cls) -> str:
@@ -74,9 +91,7 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         """
         name = cls.__name__
         # Convert CamelCase to snake_case
-        snake_case_name = re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
-        # Remove "_model" suffix if present
-        return snake_case_name.removesuffix("_model")
+        return cls.get_table_name(name=name)
 
     @classmethod
     @cache

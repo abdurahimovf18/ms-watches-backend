@@ -1,82 +1,997 @@
-2025-01-11 17:10:20 | INFO | Application run | {}
-2025-01-11 17:14:44 | INFO | Application shut down | {}
-2025-01-11 17:14:47 | INFO | Application run | {}
-2025-01-11 17:14:48 | INFO | Application shut down | {}
-2025-01-11 17:15:14 | INFO | Application run | {}
-2025-01-11 17:15:14 | INFO | Application shut down | {}
-2025-01-11 17:15:18 | INFO | Application run | {}
-2025-01-11 17:15:20 | INFO | Application shut down | {}
-2025-01-11 17:15:22 | INFO | Application run | {}
-2025-01-11 17:15:23 | INFO | Application shut down | {}
-2025-01-11 17:15:25 | INFO | Application run | {}
-2025-01-11 17:15:33 | INFO | Application shut down | {}
-2025-01-11 17:16:18 | INFO | Application run | {}
-2025-01-11 17:16:19 | INFO | Application shut down | {}
-2025-01-11 17:16:21 | INFO | Application run | {}
-2025-01-11 17:16:23 | INFO | Application shut down | {}
-2025-01-11 17:16:24 | INFO | Application run | {}
-2025-01-11 17:16:26 | INFO | Application shut down | {}
-2025-01-11 17:16:28 | INFO | Application run | {}
-2025-01-11 17:16:33 | INFO | Application shut down | {}
-2025-01-11 17:16:36 | INFO | Application run | {}
-2025-01-11 17:16:38 | INFO | Application run | {}
-2025-01-11 17:16:40 | INFO | Application run | {}
-2025-01-11 17:16:41 | INFO | Application shut down | {}
-2025-01-11 17:16:42 | INFO | Application run | {}
-2025-01-11 17:16:43 | INFO | Application shut down | {}
-2025-01-11 17:16:47 | INFO | Application run | {}
-2025-01-11 17:16:50 | INFO | Application shut down | {}
-2025-01-11 17:16:51 | INFO | Application run | {}
-2025-01-11 17:16:57 | INFO | Application shut down | {}
-2025-01-11 17:16:59 | INFO | Application run | {}
-2025-01-11 17:17:01 | INFO | Application run | {}
-2025-01-11 17:17:01 | INFO | Application shut down | {}
-2025-01-11 17:17:03 | INFO | Application run | {}
-2025-01-11 17:17:04 | INFO | Application shut down | {}
-2025-01-11 17:17:06 | INFO | Application run | {}
-2025-01-11 17:17:53 | INFO | Application shut down | {}
-2025-01-11 17:17:54 | INFO | Application run | {}
-2025-01-11 17:17:56 | INFO | Application shut down | {}
-2025-01-11 17:17:58 | INFO | Application run | {}
-2025-01-11 17:17:59 | INFO | Application shut down | {}
-2025-01-11 17:18:00 | INFO | Application run | {}
-2025-01-11 17:18:02 | INFO | Application shut down | {}
-2025-01-11 17:18:05 | INFO | Application run | {}
-2025-01-11 17:18:06 | INFO | Application shut down | {}
-2025-01-11 17:18:08 | INFO | Application run | {}
-2025-01-11 17:18:10 | INFO | Application shut down | {}
-2025-01-11 17:18:12 | INFO | Application run | {}
-2025-01-11 17:18:14 | INFO | Application shut down | {}
-2025-01-11 17:18:16 | INFO | Application run | {}
-2025-01-11 17:18:16 | INFO | Application shut down | {}
-2025-01-11 17:18:18 | INFO | Application run | {}
-2025-01-11 17:18:24 | INFO | Application shut down | {}
-2025-01-11 17:18:26 | INFO | Application run | {}
-2025-01-11 17:18:32 | INFO | Application shut down | {}
-2025-01-11 17:18:34 | INFO | Application run | {}
-2025-01-11 17:18:51 | INFO | Application shut down | {}
-2025-01-11 17:19:08 | INFO | Application run | {}
-2025-01-11 17:19:14 | INFO | Application shut down | {}
-2025-01-11 17:19:31 | INFO | Application run | {}
-2025-01-11 17:19:33 | INFO | Application run | {}
-2025-01-11 17:19:41 | INFO | Application shut down | {}
-2025-01-11 17:19:43 | INFO | Application run | {}
-2025-01-11 17:19:43 | INFO | Application shut down | {}
-2025-01-11 17:19:45 | INFO | Application run | {}
-2025-01-11 17:19:50 | INFO | Application shut down | {}
-2025-01-11 17:19:52 | INFO | Application run | {}
-2025-01-11 17:19:56 | INFO | Application shut down | {}
-2025-01-11 17:19:57 | INFO | Application run | {}
-2025-01-11 17:19:58 | INFO | Application shut down | {}
-2025-01-11 17:19:59 | INFO | Application run | {}
-2025-01-11 17:20:01 | INFO | Application run | {}
-2025-01-11 17:20:11 | INFO | Application shut down | {}
-2025-01-11 17:20:14 | INFO | Application run | {}
-2025-01-11 17:20:15 | INFO | Application shut down | {}
-2025-01-11 17:20:16 | INFO | Application run | {}
-2025-01-11 17:20:19 | INFO | Application shut down | {}
-2025-01-11 17:20:21 | INFO | Application run | {}
-2025-01-11 17:20:24 | INFO | Application shut down | {}
-2025-01-11 17:20:26 | INFO | Application run | {}
-2025-01-11 18:42:17 | INFO | Application run | {}
-2025-01-11 19:48:28 | INFO | Application shut down | {}
+2025-01-14 18:21:25 | INFO | Application shut down | {}
+2025-01-14 18:21:27 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:21:27 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:21:27 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:27 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:21:27 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:27 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:21:27 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:21:27 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:21:27 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:21:27 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:27 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:21:27 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:21:27 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:21:27 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:21:27 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:21:27 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:27 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:21:27 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:21:27 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:21:27 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:21:27 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:21:27 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:21:27 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:21:27 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:21:27 | INFO | Application run | {}
+2025-01-14 18:21:33 | INFO | Application shut down | {}
+2025-01-14 18:21:35 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:21:35 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:21:35 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:35 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:21:35 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:35 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:21:35 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:21:35 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:21:35 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:21:35 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:35 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:21:35 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:21:35 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:21:35 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:21:35 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:21:35 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:21:35 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:21:35 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:21:35 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:21:35 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:21:35 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:21:35 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:21:35 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:21:35 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:21:35 | INFO | Application run | {}
+2025-01-14 18:24:54 | INFO | Application shut down | {}
+2025-01-14 18:26:06 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:26:06 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:06 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:06 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:06 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:06 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:06 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:06 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:26:06 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:26:06 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:06 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:06 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:26:06 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:26:06 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:26:06 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:26:06 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:06 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:06 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:06 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:26:06 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:26:06 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:26:06 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:26:06 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:06 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:26:06 | INFO | Application run | {}
+2025-01-14 18:26:21 | INFO | Application shut down | {}
+2025-01-14 18:26:23 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:26:23 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:23 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:23 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:26:23 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:26:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:23 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:26:23 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:26:23 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:26:23 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:26:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:23 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:26:23 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:26:23 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:26:23 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:26:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:23 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:26:25 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:26:25 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:25 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:25 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:25 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:25 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:25 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:26:25 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:26:25 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:26:25 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:25 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:26:25 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:26:25 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:26:25 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:26:25 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:26:25 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:26:25 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:26:25 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:25 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:26:25 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:26:25 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:26:25 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:26:25 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:26:25 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:26:25 | INFO | Application run | {}
+2025-01-14 18:26:48 | INFO | Application shut down | {}
+2025-01-14 18:28:56 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:28:56 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:28:56 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:56 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:28:56 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:56 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:28:56 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:28:56 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:28:56 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:28:56 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:56 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:28:56 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:28:56 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:28:56 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:28:56 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:28:56 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:56 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:28:56 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:28:56 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:28:56 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:28:56 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:28:56 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:28:56 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:28:56 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:28:58 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:28:58 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:28:58 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:58 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:28:58 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:58 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:28:58 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:28:58 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:28:58 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:28:58 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:58 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:28:58 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:28:58 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:28:58 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:28:58 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:28:58 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:28:58 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:28:58 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:28:58 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:28:58 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:28:58 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:28:58 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:28:58 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:28:58 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:28:58 | INFO | Application run | {}
+2025-01-14 18:29:49 | INFO | Application shut down | {}
+2025-01-14 18:30:13 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:13 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:13 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:13 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:13 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:13 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:13 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:13 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:13 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:13 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:13 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:13 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:13 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:13 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:13 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:13 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:13 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:13 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:13 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:13 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:13 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:13 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:13 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:13 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:13 | INFO | Application run | {}
+2025-01-14 18:30:21 | INFO | Application shut down | {}
+2025-01-14 18:30:23 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:23 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:23 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:23 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:23 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:23 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:23 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:23 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:23 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:23 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:23 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:23 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:23 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:23 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:23 | INFO | Application run | {}
+2025-01-14 18:30:23 | INFO | Application shut down | {}
+2025-01-14 18:30:25 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:25 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:25 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:25 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:25 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:25 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:25 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:25 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:25 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:25 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:25 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:25 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:25 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:25 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:25 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:25 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:25 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:25 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:25 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:25 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:25 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:25 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:25 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:25 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:27 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:27 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:27 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:27 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:27 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:27 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:27 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:27 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:27 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:27 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:27 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:27 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:27 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:27 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:27 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:27 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:27 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:27 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:27 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:27 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:27 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:27 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:27 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:27 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:30 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:30 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:30 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:30 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:30 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:30 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:30 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:30 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:30 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:30 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:30 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:30 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:30 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:30 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:30 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:30 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:30 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:30 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:30 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:30 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:30 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:30 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:30 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:30 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:32 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:32 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:32 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:32 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:32 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:32 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:32 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:32 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:32 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:32 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:32 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:32 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:32 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:32 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:32 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:32 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:32 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:32 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:32 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:32 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:32 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:32 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:32 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:32 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:39 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:30:39 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:39 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:39 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:39 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:39 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:39 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:30:39 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:30:39 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:30:39 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:39 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:30:39 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:30:39 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:30:39 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:30:39 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:30:39 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:30:39 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:30:39 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:39 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:30:39 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:30:39 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:30:39 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:30:39 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:30:39 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:30:39 | INFO | Application run | {}
+2025-01-14 18:31:07 | INFO | Application shut down | {}
+2025-01-14 18:31:09 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:09 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:09 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:09 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:09 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:09 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:09 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:09 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:31:09 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:31:09 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:09 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:09 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:31:09 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:31:09 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:31:09 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:31:09 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:09 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:09 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:09 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:31:09 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:31:14 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:14 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:14 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:14 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:14 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:14 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:14 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:21 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:21 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:21 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:21 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:21 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:21 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:21 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:27 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:27 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:27 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:27 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:27 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:27 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:27 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:37 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:37 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:37 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:37 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:37 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:37 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:37 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:39 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:39 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:39 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:39 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:39 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:39 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:39 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:39 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:31:39 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:31:39 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:39 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:39 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:31:39 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:31:39 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:31:39 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:31:39 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:39 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:39 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:39 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:31:39 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:31:39 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:31:39 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:31:39 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:39 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:31:39 | INFO | Application run | {}
+2025-01-14 18:31:41 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:41 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:41 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:41 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:41 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:41 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:41 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:41 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:31:41 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:31:41 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:41 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:41 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:31:41 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:31:41 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:31:41 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:31:41 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:41 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:41 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:41 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:31:41 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:31:41 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:31:41 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:31:41 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:41 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:31:41 | INFO | Application run | {}
+2025-01-14 18:31:50 | INFO | Application shut down | {}
+2025-01-14 18:31:52 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:52 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:52 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:52 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:52 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:52 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:52 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:52 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:31:52 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:31:52 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:52 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:52 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:31:52 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:31:52 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:31:52 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:31:52 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:52 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:52 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:52 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:31:52 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:31:52 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:31:52 | DEBUG | Generating index for table: brands_to_countries | {}
+2025-01-14 18:31:52 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:31:52 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:31:52 | INFO | Application run | {}
+2025-01-14 18:31:57 | INFO | Application shut down | {}
+2025-01-14 18:31:59 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:31:59 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:59 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:59 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:59 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:59 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:59 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:31:59 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:31:59 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:31:59 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:59 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:31:59 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:31:59 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:31:59 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:31:59 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:31:59 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:31:59 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:31:59 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:59 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:31:59 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:31:59 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:31:59 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:31:59 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:31:59 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:31:59 | INFO | Application run | {}
+2025-01-14 18:32:01 | INFO | Application shut down | {}
+2025-01-14 18:32:03 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:32:03 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:03 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:03 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:03 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:03 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:03 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:03 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:32:03 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:32:03 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:03 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:03 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:32:03 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:32:03 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:32:03 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:32:03 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:03 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:03 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:03 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:32:03 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:32:03 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:32:03 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:32:03 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:03 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:32:03 | INFO | Application run | {}
+2025-01-14 18:32:05 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:32:05 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:05 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:05 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:05 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:05 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:05 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:05 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:32:05 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:32:05 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:05 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:05 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:32:05 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:32:05 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:32:05 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:32:05 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:05 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:05 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:05 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:32:05 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:32:05 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:32:05 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:32:05 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:05 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:32:05 | INFO | Application run | {}
+2025-01-14 18:32:06 | INFO | Application shut down | {}
+2025-01-14 18:32:08 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:32:08 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:08 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:08 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:08 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:08 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:08 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:32:08 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:32:08 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:32:08 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:08 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:32:08 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:32:08 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:32:08 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:32:08 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:32:08 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:32:08 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:32:08 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:08 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:32:08 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:32:08 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:32:08 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:32:08 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:32:08 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:32:08 | INFO | Application run | {}
+2025-01-14 18:32:27 | INFO | Application shut down | {}
+2025-01-14 18:35:21 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:35:21 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:21 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:21 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:21 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:21 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:21 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:21 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:35:21 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:35:21 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:21 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:21 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:35:21 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:35:21 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:35:21 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:35:21 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:21 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:21 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:35:21 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:35:21 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:35:21 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:35:21 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:35:21 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:35:21 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:35:23 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:35:23 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:23 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:23 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:35:23 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:35:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:23 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:35:23 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:35:23 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:35:23 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:35:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:35:23 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:35:23 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:35:23 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:35:23 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:35:23 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:35:23 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:35:23 | INFO | Application run | {}
+2025-01-14 18:35:51 | INFO | Application shut down | {}
+2025-01-14 18:35:54 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:35:54 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:54 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:54 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:54 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:54 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:54 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:35:54 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:35:54 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:35:54 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:54 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:35:54 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:35:54 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:35:54 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:35:54 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:35:54 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:35:54 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:35:54 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:35:54 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:35:54 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:35:54 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:35:54 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:35:54 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:35:54 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:35:54 | INFO | Application run | {}
+2025-01-14 18:36:02 | INFO | Application shut down | {}
+2025-01-14 18:36:07 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:36:07 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:36:07 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:07 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:36:07 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:07 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:36:07 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:36:07 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:36:07 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:36:07 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:07 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:36:07 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:36:07 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:36:07 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:36:07 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:36:07 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:07 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:36:07 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:36:07 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:36:07 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:36:07 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:36:07 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:36:07 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:36:07 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:36:23 | DEBUG | Creating many-to-many relationship between models: BrandsModel and CountriesModel | {}
+2025-01-14 18:36:23 | DEBUG | Casting models to ORM: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:36:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:36:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:36:23 | DEBUG | Generating model name for models: ['BrandsModel', 'CountriesModel'] | {}
+2025-01-14 18:36:23 | DEBUG | Generating foreign key column for model: BrandsModel | {}
+2025-01-14 18:36:23 | DEBUG | Casting models to ORM: ['BrandsModel'] | {}
+2025-01-14 18:36:23 | DEBUG | Checking if model BrandsModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:23 | DEBUG | Model BrandsModel is a valid ORM model. | {}
+2025-01-14 18:36:23 | DEBUG | Converting plural name to singular: brands | {}
+2025-01-14 18:36:23 | DEBUG | Foreign key column name: brand_id | {}
+2025-01-14 18:36:23 | DEBUG | Generating foreign key column for model: CountriesModel | {}
+2025-01-14 18:36:23 | DEBUG | Casting models to ORM: ['CountriesModel'] | {}
+2025-01-14 18:36:23 | DEBUG | Checking if model CountriesModel is a valid SQLAlchemy ORM: True | {}
+2025-01-14 18:36:23 | DEBUG | Model CountriesModel is a valid ORM model. | {}
+2025-01-14 18:36:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:36:23 | DEBUG | Foreign key column name: country_id | {}
+2025-01-14 18:36:23 | DEBUG | Cloning columns from table: temp | {}
+2025-01-14 18:36:23 | DEBUG | Generating indexes for models: ['brands', 'countries'] | {}
+2025-01-14 18:36:23 | DEBUG | Generating index for table: countries | {}
+2025-01-14 18:36:23 | DEBUG | Converting plural name to singular: brands_to_countries | {}
+2025-01-14 18:36:23 | DEBUG | Converting plural name to singular: countries | {}
+2025-01-14 18:36:23 | DEBUG | Returning ORM class for many-to-many model: BrandsToCountries | {}
+2025-01-14 18:36:23 | INFO | Application run | {}
+2025-01-14 18:36:29 | INFO | Application shut down | {}
+2025-01-14 21:18:05 | INFO | Application run | {}
+2025-01-14 21:18:21 | INFO | Application shut down | {}
+2025-01-14 21:18:23 | INFO | Application run | {}
+2025-01-14 21:19:12 | INFO | Application shut down | {}
+2025-01-14 21:19:31 | INFO | Application run | {}
+2025-01-14 21:19:43 | INFO | Application shut down | {}
+2025-01-14 21:19:47 | INFO | Application run | {}
+2025-01-14 21:19:47 | INFO | Application shut down | {}
+2025-01-14 21:19:49 | INFO | Application run | {}
+2025-01-14 21:20:24 | INFO | Application shut down | {}
+2025-01-14 21:20:26 | INFO | Application run | {}
+2025-01-14 21:20:32 | INFO | Application shut down | {}
+2025-01-14 21:20:33 | INFO | Application run | {}
+2025-01-14 21:21:05 | INFO | Application shut down | {}
+2025-01-14 21:21:23 | INFO | Application run | {}
+2025-01-14 21:21:25 | INFO | Application run | {}
+2025-01-14 21:21:32 | INFO | Application shut down | {}
+2025-01-14 21:21:33 | INFO | Application run | {}
+2025-01-14 21:21:44 | INFO | Application shut down | {}
+2025-01-14 21:32:10 | INFO | Application run | {}
+2025-01-14 21:32:20 | INFO | Application shut down | {}
+2025-01-14 21:32:22 | INFO | Application run | {}
+2025-01-14 21:32:27 | INFO | Application shut down | {}
+2025-01-14 21:32:28 | INFO | Application run | {}
+2025-01-14 21:37:26 | INFO | Application shut down | {}
+2025-01-14 21:37:28 | INFO | Application run | {}
+2025-01-14 21:39:38 | INFO | Application shut down | {}
+2025-01-14 21:40:00 | INFO | Application run | {}
+2025-01-14 21:41:08 | INFO | Application shut down | {}
+2025-01-14 21:41:11 | INFO | Application run | {}
+2025-01-14 21:41:22 | INFO | Application shut down | {}
+2025-01-14 21:41:24 | INFO | Application run | {}
+2025-01-14 21:41:38 | INFO | Application shut down | {}
+2025-01-14 21:41:40 | INFO | Application run | {}
+2025-01-14 21:41:53 | INFO | Application shut down | {}
+2025-01-14 21:41:54 | INFO | Application run | {}
+2025-01-14 21:41:56 | INFO | Application run | {}
+2025-01-14 21:42:06 | INFO | Application shut down | {}
+2025-01-14 21:42:08 | INFO | Application run | {}
+2025-01-14 21:42:18 | INFO | Application shut down | {}
+2025-01-14 21:42:20 | INFO | Application run | {}
+2025-01-14 21:42:22 | INFO | Application run | {}
+2025-01-14 21:42:29 | INFO | Application shut down | {}
+2025-01-14 21:42:31 | INFO | Application run | {}
+2025-01-14 21:42:42 | INFO | Application shut down | {}
+2025-01-14 21:42:44 | INFO | Application run | {}
+2025-01-14 21:42:45 | INFO | Application shut down | {}
+2025-01-14 21:42:47 | INFO | Application run | {}
+2025-01-14 21:43:03 | INFO | Application shut down | {}
+2025-01-14 21:43:05 | INFO | Application run | {}
+2025-01-14 21:43:17 | INFO | Application shut down | {}
+2025-01-14 21:43:19 | INFO | Application run | {}
+2025-01-14 21:43:35 | INFO | Application shut down | {}
+2025-01-14 21:43:37 | INFO | Application run | {}
+2025-01-14 21:43:56 | INFO | Application shut down | {}
+2025-01-14 21:43:58 | INFO | Application run | {}
+2025-01-14 21:44:06 | INFO | Application shut down | {}
+2025-01-14 21:44:08 | INFO | Application run | {}
+2025-01-14 21:44:18 | INFO | Application shut down | {}
+2025-01-14 21:44:19 | INFO | Application run | {}
+2025-01-14 21:44:27 | INFO | Application shut down | {}
+2025-01-14 21:44:29 | INFO | Application run | {}
+2025-01-14 21:44:37 | INFO | Application shut down | {}
+2025-01-14 21:44:39 | INFO | Application run | {}
+2025-01-14 21:44:41 | INFO | Application run | {}
+2025-01-14 21:44:49 | INFO | Application shut down | {}
+2025-01-14 21:44:51 | INFO | Application run | {}
+2025-01-14 21:44:58 | INFO | Application shut down | {}
+2025-01-14 21:45:00 | INFO | Application run | {}
+2025-01-14 21:45:09 | INFO | Application shut down | {}
+2025-01-14 21:45:11 | INFO | Application run | {}
+2025-01-14 21:45:19 | INFO | Application shut down | {}
+2025-01-14 21:45:20 | INFO | Application run | {}
+2025-01-14 21:45:29 | INFO | Application shut down | {}
+2025-01-14 21:45:31 | INFO | Application run | {}
+2025-01-14 21:45:33 | INFO | Application run | {}
+2025-01-14 21:45:43 | INFO | Application shut down | {}
+2025-01-14 21:45:45 | INFO | Application run | {}
+2025-01-14 21:45:49 | INFO | Application shut down | {}
+2025-01-14 21:45:51 | INFO | Application run | {}
+2025-01-14 21:46:07 | INFO | Application shut down | {}
+2025-01-14 21:46:09 | INFO | Application run | {}
+2025-01-14 21:46:20 | INFO | Application shut down | {}
+2025-01-14 21:46:22 | INFO | Application run | {}
+2025-01-14 21:46:32 | INFO | Application shut down | {}
+2025-01-14 21:46:33 | INFO | Application run | {}
+2025-01-14 21:47:00 | INFO | Application shut down | {}
+2025-01-14 21:47:01 | INFO | Application run | {}
+2025-01-14 21:47:11 | INFO | Application shut down | {}
+2025-01-14 21:47:13 | INFO | Application run | {}
+2025-01-14 21:47:13 | INFO | Application shut down | {}
+2025-01-14 21:47:15 | INFO | Application run | {}
+2025-01-14 21:47:37 | INFO | Application shut down | {}
+2025-01-14 21:47:39 | INFO | Application run | {}
+2025-01-14 21:47:47 | INFO | Application shut down | {}
+2025-01-14 21:47:49 | INFO | Application run | {}
+2025-01-14 21:47:57 | INFO | Application shut down | {}
+2025-01-14 21:47:59 | INFO | Application run | {}
+2025-01-14 21:48:09 | INFO | Application shut down | {}
+2025-01-14 21:48:10 | INFO | Application run | {}
+2025-01-14 21:48:22 | INFO | Application shut down | {}
+2025-01-14 21:48:24 | INFO | Application run | {}
+2025-01-14 21:48:34 | INFO | Application shut down | {}
+2025-01-14 21:48:36 | INFO | Application run | {}
+2025-01-14 21:49:37 | INFO | Application shut down | {}
+2025-01-14 21:49:39 | INFO | Application run | {}
+2025-01-14 21:51:34 | INFO | Application shut down | {}
+2025-01-14 21:51:36 | INFO | Application run | {}
+2025-01-14 21:51:38 | INFO | Application shut down | {}
+2025-01-14 21:52:03 | INFO | Application run | {}
+2025-01-14 21:52:07 | INFO | Application shut down | {}
+2025-01-14 21:52:09 | INFO | Application run | {}
+2025-01-14 21:52:11 | INFO | Application shut down | {}
+2025-01-14 21:52:13 | INFO | Application run | {}
+2025-01-14 21:52:22 | INFO | Application shut down | {}
+2025-01-14 21:52:24 | INFO | Application run | {}
+2025-01-14 21:52:25 | INFO | Application shut down | {}
+2025-01-14 22:01:47 | INFO | Application run | {}
+2025-01-14 22:03:50 | INFO | Application shut down | {}
+2025-01-14 22:03:52 | INFO | Application run | {}
+2025-01-14 22:05:59 | INFO | Application shut down | {}
+2025-01-14 22:06:01 | INFO | Application run | {}
+2025-01-14 22:06:01 | INFO | Application shut down | {}
+2025-01-14 22:06:03 | INFO | Application run | {}
+2025-01-14 22:06:08 | INFO | Application shut down | {}
+2025-01-14 22:06:10 | INFO | Application run | {}
+2025-01-14 22:06:11 | INFO | Application shut down | {}
+2025-01-14 22:06:13 | INFO | Application run | {}
+2025-01-14 22:06:15 | INFO | Application run | {}
+2025-01-14 22:06:26 | INFO | Application shut down | {}
+2025-01-14 22:06:27 | INFO | Application run | {}
+2025-01-14 22:07:15 | INFO | Application shut down | {}
+2025-01-14 22:07:16 | INFO | Application run | {}
+2025-01-14 22:09:49 | INFO | Application shut down | {}
+2025-01-14 22:09:51 | INFO | Application run | {}
+2025-01-14 22:14:30 | INFO | Application shut down | {}
+2025-01-14 22:14:31 | INFO | Application run | {}
+2025-01-14 22:14:33 | INFO | Application shut down | {}
+2025-01-14 22:14:50 | INFO | Application run | {}
+2025-01-14 22:15:06 | INFO | Application shut down | {}
+2025-01-14 22:16:38 | INFO | Application run | {}
+2025-01-14 22:16:41 | INFO | Application shut down | {}
+2025-01-14 22:16:43 | INFO | Application run | {}
+2025-01-14 22:16:48 | INFO | Application shut down | {}
+2025-01-14 22:17:05 | INFO | Application run | {}
+2025-01-14 22:17:07 | INFO | Application shut down | {}
+2025-01-14 22:17:08 | INFO | Application run | {}
+2025-01-14 22:17:14 | INFO | Application shut down | {}
+2025-01-14 22:17:16 | INFO | Application run | {}
+2025-01-14 22:17:20 | INFO | Application shut down | {}
+2025-01-14 22:17:22 | INFO | Application run | {}
+2025-01-14 22:17:36 | INFO | Application shut down | {}
+2025-01-14 22:17:38 | INFO | Application run | {}
+2025-01-14 22:17:43 | INFO | Application shut down | {}
+2025-01-14 22:17:45 | INFO | Application run | {}
+2025-01-14 22:17:45 | INFO | Application shut down | {}
+2025-01-14 22:17:47 | INFO | Application run | {}
+2025-01-14 22:17:49 | INFO | Application run | {}
+2025-01-14 22:17:55 | INFO | Application shut down | {}
+2025-01-14 22:17:56 | INFO | Application run | {}
+2025-01-14 22:18:01 | INFO | Application shut down | {}
+2025-01-14 22:18:03 | INFO | Application run | {}
+2025-01-14 22:18:05 | INFO | Application shut down | {}
+2025-01-14 22:18:07 | INFO | Application run | {}
+2025-01-14 22:18:09 | INFO | Application shut down | {}
+2025-01-14 22:18:11 | INFO | Application run | {}
+2025-01-14 22:18:14 | INFO | Application shut down | {}
+2025-01-14 22:18:15 | INFO | Application run | {}
+2025-01-14 22:18:16 | INFO | Application shut down | {}
+2025-01-14 22:18:18 | INFO | Application run | {}
+2025-01-14 22:18:25 | INFO | Application shut down | {}
+2025-01-14 22:18:27 | INFO | Application run | {}
+2025-01-14 22:18:29 | INFO | Application run | {}
+2025-01-14 22:18:41 | INFO | Application shut down | {}
+2025-01-14 22:18:43 | INFO | Application run | {}
+2025-01-14 22:19:27 | INFO | Application shut down | {}
+2025-01-14 22:19:50 | INFO | Application run | {}
+2025-01-14 22:19:50 | INFO | Application shut down | {}
+2025-01-14 22:19:52 | INFO | Application run | {}
+2025-01-14 22:20:02 | INFO | Application shut down | {}
+2025-01-14 22:20:08 | INFO | Application run | {}
+2025-01-14 22:20:10 | INFO | Application shut down | {}
+2025-01-14 22:20:12 | INFO | Application run | {}
+2025-01-14 22:20:16 | INFO | Application shut down | {}
+2025-01-14 22:20:18 | INFO | Application run | {}
+2025-01-14 22:20:43 | INFO | Application shut down | {}
+2025-01-14 22:20:45 | INFO | Application run | {}
+2025-01-14 22:20:54 | INFO | Application run | {}
+2025-01-14 22:21:35 | INFO | Application shut down | {}
+2025-01-14 22:21:42 | INFO | Application run | {}
+2025-01-14 22:22:02 | INFO | Application shut down | {}
+2025-01-14 22:22:04 | INFO | Application run | {}
+2025-01-14 22:22:06 | INFO | Application shut down | {}
+2025-01-14 22:22:10 | INFO | Application run | {}
+2025-01-14 22:22:11 | INFO | Application shut down | {}
+2025-01-14 22:22:13 | INFO | Application run | {}
+2025-01-14 22:22:15 | INFO | Application shut down | {}
+2025-01-14 22:22:17 | INFO | Application run | {}
+2025-01-14 22:22:23 | INFO | Application shut down | {}
+2025-01-14 22:22:25 | INFO | Application run | {}
+2025-01-14 22:22:26 | INFO | Application shut down | {}
+2025-01-14 22:22:28 | INFO | Application run | {}
+2025-01-14 22:22:28 | INFO | Application shut down | {}
+2025-01-14 22:22:30 | INFO | Application run | {}
+2025-01-14 22:22:52 | INFO | Application shut down | {}
+2025-01-14 22:22:54 | INFO | Application run | {}
+2025-01-14 22:22:59 | INFO | Application shut down | {}
+2025-01-14 22:23:43 | INFO | Application run | {}
+2025-01-14 22:23:45 | INFO | Application run | {}
+2025-01-14 22:23:46 | INFO | Application shut down | {}
+2025-01-14 22:28:35 | INFO | Application run | {}
+2025-01-14 22:28:40 | INFO | Application shut down | {}
+2025-01-14 22:28:42 | INFO | Application run | {}
+2025-01-14 22:28:43 | INFO | Application shut down | {}
+2025-01-14 22:28:44 | INFO | Application run | {}
+2025-01-14 22:28:47 | INFO | Application run | {}
+2025-01-14 22:28:53 | INFO | Application shut down | {}
+2025-01-14 22:28:54 | INFO | Application run | {}
+2025-01-14 22:28:57 | INFO | Application shut down | {}
+2025-01-14 22:28:59 | INFO | Application run | {}
+2025-01-14 22:29:00 | INFO | Application shut down | {}
+2025-01-14 22:29:02 | INFO | Application run | {}
+2025-01-14 22:29:05 | INFO | Application shut down | {}
+2025-01-14 22:32:26 | INFO | Application run | {}
+2025-01-14 22:32:28 | INFO | Application run | {}
+2025-01-14 22:32:31 | INFO | Application shut down | {}
+2025-01-14 22:32:33 | INFO | Application run | {}
+2025-01-14 22:32:42 | INFO | Application shut down | {}
+2025-01-14 22:33:13 | INFO | Application run | {}
+2025-01-14 22:33:13 | INFO | Application shut down | {}
+2025-01-14 22:33:15 | INFO | Application run | {}
+2025-01-14 22:33:17 | INFO | Application shut down | {}
+2025-01-14 22:33:19 | INFO | Application run | {}
+2025-01-14 22:33:21 | INFO | Application shut down | {}
+2025-01-14 22:33:23 | INFO | Application run | {}
+2025-01-14 22:33:28 | INFO | Application shut down | {}
+2025-01-14 22:33:34 | INFO | Application run | {}
+2025-01-14 22:33:36 | INFO | Application run | {}
+2025-01-14 22:33:37 | INFO | Application shut down | {}
+2025-01-14 22:33:39 | INFO | Application run | {}
+2025-01-14 22:34:13 | INFO | Application shut down | {}
+2025-01-14 22:34:21 | INFO | Application run | {}
+2025-01-14 22:34:26 | INFO | Application shut down | {}
+2025-01-14 22:34:27 | INFO | Application run | {}
+2025-01-14 22:34:49 | INFO | Application shut down | {}
+2025-01-14 22:34:51 | INFO | Application run | {}
+2025-01-14 22:34:52 | INFO | Application shut down | {}
+2025-01-14 22:34:54 | INFO | Application run | {}
+2025-01-14 22:35:00 | INFO | Application shut down | {}
+2025-01-14 22:35:08 | INFO | Application run | {}
+2025-01-14 22:36:24 | INFO | Application shut down | {}
+2025-01-14 22:36:26 | INFO | Application run | {}
+2025-01-14 22:36:26 | INFO | Application shut down | {}
+2025-01-14 22:36:36 | INFO | Application run | {}
+2025-01-14 22:36:44 | INFO | Application shut down | {}
+2025-01-14 22:36:57 | INFO | Application run | {}
+2025-01-14 22:36:59 | INFO | Application run | {}
+2025-01-14 22:37:00 | INFO | Application shut down | {}
+2025-01-14 22:37:02 | INFO | Application run | {}
+2025-01-14 22:37:07 | INFO | Application shut down | {}
+2025-01-14 22:37:13 | INFO | Application run | {}
+2025-01-14 22:37:23 | INFO | Application shut down | {}
+2025-01-14 22:38:08 | INFO | Application run | {}
+2025-01-14 22:38:37 | INFO | Application shut down | {}
+2025-01-14 22:38:42 | INFO | Application run | {}
+2025-01-14 22:39:03 | INFO | Application shut down | {}
+2025-01-14 22:50:41 | INFO | Application run | {}
+2025-01-14 22:50:53 | INFO | Application shut down | {}
+2025-01-14 22:50:55 | INFO | Application run | {}
+2025-01-14 22:51:09 | INFO | Application shut down | {}
+2025-01-14 22:51:11 | INFO | Application run | {}
+2025-01-14 22:51:17 | INFO | Application shut down | {}
+2025-01-14 22:51:25 | INFO | Application run | {}
+2025-01-14 22:52:41 | INFO | Application shut down | {}
+2025-01-14 22:52:43 | INFO | Application run | {}
+2025-01-14 22:52:44 | INFO | Application shut down | {}
+2025-01-14 22:52:46 | INFO | Application run | {}
+2025-01-14 22:54:26 | INFO | Application shut down | {}
+2025-01-14 22:54:28 | INFO | Application run | {}
+2025-01-14 22:58:10 | INFO | Application shut down | {}
+2025-01-14 22:58:12 | INFO | Application run | {}
+2025-01-14 23:00:42 | INFO | Application shut down | {}
+2025-01-14 23:00:43 | INFO | Application run | {}
+2025-01-14 23:00:44 | INFO | Application shut down | {}
+2025-01-14 23:00:46 | INFO | Application run | {}
+2025-01-14 23:00:48 | INFO | Application shut down | {}
+2025-01-14 23:04:43 | INFO | Application run | {}
+2025-01-14 23:04:52 | INFO | Application shut down | {}
+2025-01-14 23:04:53 | INFO | Application run | {}
