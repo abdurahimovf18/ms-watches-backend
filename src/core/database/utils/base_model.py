@@ -6,7 +6,9 @@ import re
 from pydantic import BaseModel as PydBaseModel
 
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, declared_attr
-from sqlalchemy import Integer, DateTime, func, inspect
+from sqlalchemy import Integer, DateTime, func, inspect, Column
+
+from sqlalchemy.orm.properties import MappedColumn
 
 from src.core.base_settings import TIMEZONE
 from src.core.utils.cache import cache
@@ -20,7 +22,7 @@ class PkField:
     A base mixin class that provides an `id` primary key field.
     This class can be inherited to add the primary key field to models.
     """
-    id: Mapped[int] = mapped_column(DB_ID_TYPE, primary_key=True, unique=True)
+    id = Column("id", DB_ID_TYPE, primary_key=True, unique=True)
     # `mapped_column` is used to define the SQLAlchemy column. Here, `Integer` is the column type
     # and the field is marked as the primary key and unique.
 
@@ -30,14 +32,16 @@ class TimeRegisterFields:
     A mixin class that provides `created_at` and `updated_at` fields.
     These fields are typically used to track when a record was created and when it was last updated.
     """
-    created_at: Mapped[datetime] = mapped_column(
+    created_at = Column(
+        "created_at",
         DateTime, 
         server_default=func.timezone(str(TIMEZONE), func.now())
     )
     # `created_at` field uses SQLAlchemy's `func.timezone('UTC', func.now())` to set the default value
     # to the current time in UTC. This ensures that when a record is created, it gets the correct UTC timestamp.
 
-    updated_at: Mapped[datetime] = mapped_column(
+    updated_at = Column(
+        "updated_at",
         DateTime, 
         server_default=func.timezone(str(TIMEZONE), func.now()), 
         onupdate=lambda: datetime.now(timezone.utc)
@@ -57,6 +61,8 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
     """
 
     __abstract__ = True
+    __allow_unmapped__ = True
+
     metadata = default_metadata
 
     @staticmethod
@@ -89,7 +95,9 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         Returns:
             str: The dynamically generated table name in snake_case format.
         """
+
         name = cls.__name__
+
         # Convert CamelCase to snake_case
         return cls.get_table_name(name=name)
 
@@ -169,9 +177,57 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         
         return tuple(val for key, val in mapper.c.items() if key in fields)
     
+    @classmethod
+    def get_orm_cols(cls):
+        """
+        Retrieves all ORM columns defined in the class and its base classes.
+
+        This method traverses the method resolution order (MRO) of the class to collect
+        all columns defined in the class and its ancestors. It looks for attributes that 
+        are instances of `Column` and returns them as a list. This is useful for introspecting 
+        the model's columns in a flexible way, including columns defined in base classes.
+
+        Returns:
+            list[Column]: A list of `Column` objects found in the class's MRO. These columns 
+            represent the model's schema.
+        
+        Example:
+            columns = MyModel.get_orm_cols()
+            # Returns a list of Column objects defined in MyModel and its base classes
+        """
+        clses = cls.__mro__  # Get the method resolution order (MRO)
+
+        resp = []
+
+        for class_ in clses:
+            for val in class_.__dict__.values():
+                if isinstance(val, Column):
+                    resp.append(val)
+
+        return resp
+
 
     @classmethod
     @cache
     def cols_from_pyd(cls, pyd_model: PydBaseModel) -> tuple:
+        """
+        Retrieves columns from a Pydantic model's fields and maps them to the ORM columns.
+
+        This method takes a Pydantic model (`pyd_model`) and uses its `model_fields` to extract 
+        the corresponding ORM columns. It caches the result to improve performance when 
+        dealing with repeated lookups. This is useful for dynamically converting Pydantic models 
+        into SQLAlchemy columns, ensuring consistency between the schema definitions.
+
+        Args:
+            pyd_model (PydBaseModel): The Pydantic model from which the ORM columns are derived.
+        
+        Returns:
+            tuple: A tuple of `Column` objects mapped from the Pydantic model's fields, 
+            typically corresponding to the columns defined in the SQLAlchemy model.
+        
+        Example:
+            pyd_model = MyPydanticModel
+            columns = MyModel.cols_from_pyd(pyd_model)
+            # Returns a tuple of Column objects corresponding to the model_fields of MyPydanticModel
+        """
         return cls.get_columns(tuple(pyd_model.model_fields))
-    

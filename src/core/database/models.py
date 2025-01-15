@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column, declared_attr
 
 from src.core.base_settings import DB_ID_TYPE
 from .utils.base_model import BaseModel
-from .utils.relationship import create_m2m, ModelArgs, RelationshipArgs
 
 from src.users.models import UsersModel
 from src.watches.models import WatchesModel
@@ -87,64 +86,3 @@ class CollectionsToWatchesModel(BaseModel):
 
         parent_args = getattr(super(), "__table_args__", ()) or ()
         return parent_args + args
-
-    # watch: Mapped["WatchesModel"] = relationship(
-    #     "WatchesModel", back_populates="collections"
-    # ) 
-    # collection: Mapped["CollectionsModel"] = relationship(
-    #     "CollectionsModel", back_populates="watches"
-    # )
-
-
-# class LikesModel(BaseModel):    
-#     user_id: Mapped[int] = mapped_column(
-#         DB_ID_TYPE, ForeignKey("users.id", ondelete="SET NULL"), nullable=True
-#     )
-
-#     watch_id: Mapped[int] = mapped_column(
-#         DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
-#     )
-
-#     @declared_attr
-#     def __table_args__(cls):
-#         args = (
-#             Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
-#         )
-
-#         parent_args = getattr(super(), "__table_args__", ()) or ()
-#         return parent_args + args
-#     user: Mapped["UsersModel"] = relationship("UsersModel", back_populates="liked_watches")
-#     watch: Mapped["WatchesModel"] = relationship("WatchesModel", back_populates="liked_users")
-
-LikesModel = create_m2m(
-    ModelArgs(
-        model=UsersModel,
-        relate_as_singular=True,
-    ),
-    ModelArgs(
-        model=WatchesModel,
-        relate_as_singular=True,
-        on_delete="CASCADE",
-    ),
-    RelationshipArgs(
-        relation_name="likes",
-        return_orm=True
-    )
-)
-
-
-"""
-
-class ModelArgs(
-    model: BaseModel | Table,
-    foreign_key_type: Any = DB_ID_TYPE,
-    include_index: bool = False,
-    on_delete: str = "SET NULL",
-    nullable: bool = True,
-    unique: bool = False,
-    relate_as_singular: bool = False,
-    tablename: str | None = None,
-    back_populates: str | None = None
-)
-
-"""

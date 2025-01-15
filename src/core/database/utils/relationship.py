@@ -14,7 +14,7 @@ Functions include:
 """
 
 
-from typing import Callable, Any, Sequence
+from typing import Callable, Any, Sequence, Generator
 from sqlalchemy import Column, ForeignKey, Index, Table
 from sqlalchemy.exc import DuplicateColumnError
 from sqlalchemy.orm import relationship
@@ -77,7 +77,6 @@ class RelationshipArgs:
     return_orm: bool = field(default=True)
 
 
-
 class ModelManager:
     """
     Manages the dynamic generation of many-to-many relationship models, columns, and indexes.
@@ -101,8 +100,8 @@ class ModelManager:
 
         self.relation_args = relation_args
         self.args = args
-        self.model = self.cast_to_orm(self.args.model)
         self.all_args = all_args
+        self.model = self.cast_to_orm(self.args.model)
 
     @property
     def relationship(self) -> list[Any]:
@@ -156,7 +155,10 @@ class ModelManager:
 
         return hasattr(value, "__table__")
     
-    def clone_columns(self, value: BaseModel | Table) -> list[Column]:
+    def copy_cols(self, cols: Sequence[Column] | Generator[Column, None, None]) -> list[Column]:
+        return [col.copy() for col in cols]
+    
+    def clone_src_cols(self, value: BaseModel | Table) -> list[Column]:
         """
         Clones columns from the given SQLAlchemy model or table.
 
@@ -276,8 +278,15 @@ class ModelManager:
             str: The table name of the model.
         """
 
-        return args.model.__tablename__
-    
+        resp = type(args.model).__name__
+
+        print(resp)
+
+        print(args.model.__name__)
+
+
+        return resp
+
     @property
     def model_name(self) -> str:
         """
@@ -301,6 +310,9 @@ class ModelManager:
         if self.relation_args is not None:
             return self.relation_args.relation_name
         
+        print(self.all_args)
+
+        quit()
         return "_to_".join(map(self.get_table_name, self.all_args))
     
     @property
@@ -418,17 +430,26 @@ class ModelManager:
     @property
     def default_columns(self) -> list[Column]:
         """
-        Returns the default columns for an empty intermediary model.
+        Retrieves the default columns for an empty intermediary model.
+
+        This method fetches the list of columns defined in the base model, which
+        can be useful when dynamically creating intermediary tables or handling 
+        schema metadata for empty models. The columns returned represent the 
+        structure of the intermediary model without any additional data or relationships 
+        added.
 
         Returns:
-            list[Column]: The default columns.
+            list[Column]: A list of `Column` objects representing the default columns 
+            of the intermediary model, typically retrieved from the base model's ORM mappings.
+
+        Example:
+            columns = instance.default_columns
+            # Returns a list of Column objects from BaseModel.get_orm_cols()
         """
 
-        class TempOrmModel(BaseModel):
-            pass
+        cols = self.copy_cols(BaseModel.get_orm_cols())
+        return cols
 
-        return self.clone_columns(TempOrmModel)
-    
 
 class ModelManagerHandler:
     """
@@ -449,6 +470,10 @@ class ModelManagerHandler:
         self.relation_args = relation_args
         self.args = args
         self.managers = self.get_managers()
+
+        # print(*(m.args.model.__name__ for m in self.managers))
+        # quit()
+
         self._first = self.managers[0]
 
     def get_columns(self) -> list[Column]:
@@ -463,7 +488,7 @@ class ModelManagerHandler:
         for manager in self.managers:
             columns.extend(manager.columns)
 
-        columns.extend(self.managers[0].default_columns)
+        columns.extend(self._first.default_columns)
 
         return columns
 
@@ -583,6 +608,14 @@ class ModelManagerHandler:
         Returns:
             str: The generated model name in the form "Model1ToModel2", without the "Model" suffix.
         """
+        if self.relation_args.relation_name is not None:
+            resp_list = []
+
+            for ele in self.relation_args.relation_name.split("_"):
+                resp_list.append(ele.capitalize())
+
+            return "".join(resp_list)
+        
         return "To".join(manager.model_name.removesuffix("Model") for manager in self.managers)
     
     def generate_orm(self) -> BaseModel:
@@ -596,12 +629,12 @@ class ModelManagerHandler:
             BaseModel: The dynamically created SQLAlchemy ORM model class representing the many-to-many relationship.
         """
         
-
         table = self.generate_table()
 
-        class M2M(BaseModel):
+        class M2M(BaseModel): 
             __table__ = table
             __allow_unmapped__ = True
+            
 
         M2M.__name__ = self.model_name
         self.set_relations(model=M2M)
@@ -633,9 +666,11 @@ class ModelManagerHandler:
 
             The relationships will be added dynamically to the `User` model.
         """
-        relationships: list[Any] = self.get_relationships()
+
 
         # Generate dynamic relationship names based on back_populates for each manager
+        relationships: list[Any] = self.get_relationships()
+
         name_gen = (manager.col_tablename for manager in self.managers if manager.args.back_populates is not None)
 
         # Dynamically set each relationship on the model using the generated names
@@ -652,7 +687,9 @@ class ModelManagerHandler:
         return self.generate_table()
     
 
-def create_m2m(arg1: ModelArgs, arg2: ModelArgs, relation_args: RelationshipArgs) -> BaseModel:
+def create_m2m(arg1: ModelArgs, 
+               arg2: ModelArgs, 
+               relation_args: RelationshipArgs | None = None) -> BaseModel:
     """
     Creates an intermediary many-to-many model or table based on the provided `ModelArgs` and `RelationshipArgs`.
 
@@ -683,6 +720,9 @@ def create_m2m(arg1: ModelArgs, arg2: ModelArgs, relation_args: RelationshipArgs
 
         This will create an intermediary model/table with the necessary relationships and configurations.
     """
+
+    relation_args = relation_args or RelationshipArgs()
+
     manager_handler = ModelManagerHandler(arg1, arg2, relation_args=relation_args)
 
     m2m = manager_handler.generate_m2m()
