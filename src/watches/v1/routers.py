@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 from .schemas import watch
 from .services import router_services as services
 
-router = APIRouter(prefix="/V1", tags=["V1"])
+
+router = APIRouter(prefix="/v1", tags=["V1"])
 
 
 # @router.post("/add_watch")
@@ -24,9 +25,10 @@ async def get_featured_watches(params: watch.WaFeParamSchema = Depends()) -> lis
 @router.get(
     "/top-weekly",    
 )
-async def get_top_weekly_watch(params: watch.WaTwParamSchema = Depends()) -> watch.WaTwRespSchema:
-    resp = await services.get_top_weekly_watch(params=params)
+async def get_top_weekly_watches(params: watch.WaTwParamSchema = Depends()) -> list[watch.WaTwRespSchema]:
+    resp = await services.get_top_weekly_watches(params=params)
     return resp
+
 
 @router.get(
     "/new-arrivals"

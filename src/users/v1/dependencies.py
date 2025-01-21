@@ -2,14 +2,14 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 
 from .services.token_services import get_data_from_jwt
-from .services import cache
-from .schemas import UserDbSchema
+from .services import cache, db
+from .schemas import users
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
-async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
+async def get_current_user(token: str = Depends(oauth2_scheme)) -> users.UsDbSchema:
     """
     Dependency to retrieve the current authenticated user.
 
@@ -17,7 +17,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
     from the database or cache. Raises HTTP exceptions for invalid tokens or users.
 
     :param token: The JWT token extracted from the Authorization header.
-    :return: A UserDbSchema object representing the authenticated user.
+    :return: A users.UsDbSchema object representing the authenticated user.
     :raises HTTPException: If the token is invalid or the user is not found.
     """
     # Decode JWT token to extract payload
@@ -37,9 +37,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Missing user ID in token",
         )
+    
+    params = users.UsPkParamSchema(user_id=user_id)
 
     # Retrieve the user from cache or database
-    user = await cache.get_user_by_id(user_id=user_id)
+    user = await db.get_user_by_id(params=params)
 
     if not user:
         raise HTTPException(
@@ -47,7 +49,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
             detail="User not found",
         )
 
-    user = UserDbSchema(**user)
+    user = users.UsDbSchema(**user)
 
     if not user.is_active:
         raise HTTPException(
@@ -58,7 +60,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserDbSchema:
     return user
 
 
-async def get_admin(user: UserDbSchema = Depends(get_current_user)) -> UserDbSchema:
+async def get_admin(user: users.UsDbSchema = Depends(get_current_user)) -> users.UsDbSchema:
     """
     Retrieve the current authenticated user and verify if the user is an admin.
 
@@ -68,10 +70,10 @@ async def get_admin(user: UserDbSchema = Depends(get_current_user)) -> UserDbSch
     the requested resource.
 
     Args:
-        user (UserDbSchema): The currently authenticated user, retrieved from the `get_current_user` dependency.
+        user (users.UsDbSchema): The currently authenticated user, retrieved from the `get_current_user` dependency.
 
     Returns:
-        UserDbSchema: The authenticated user object, if the user is a superuser.
+        users.UsDbSchema: The authenticated user object, if the user is a superuser.
 
     Raises:
         HTTPException: If the user is not a superuser, with a 403 Forbidden status code.
@@ -79,8 +81,7 @@ async def get_admin(user: UserDbSchema = Depends(get_current_user)) -> UserDbSch
     if not user.is_superuser:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="You do not have permission to access this resource"
+            detail="User does not have permission to access this resource"
         )
     
     return user
-

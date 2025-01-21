@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Sequence
+from typing import Sequence, Any, Callable
 
 import re
 
@@ -51,20 +51,7 @@ class TimeRegisterFields:
     # The `onupdate` argument is a lambda function that ensures the field is updated with the current time on modifications.
 
 
-class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
-    """
-    A base model that combines primary key and time-tracking fields.
-    This class is intended to be inherited by other model classes.
-    
-    It automatically adds common fields like `id`, `created_at`, and `updated_at`
-    while providing methods for handling column names and converting instances to dictionaries.
-    """
-
-    __abstract__ = True
-    __allow_unmapped__ = True
-
-    metadata = default_metadata
-
+class BaseModelMethods:
     @staticmethod
     def get_table_name(name: str):
         """
@@ -82,25 +69,6 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         # Remove "_model" suffix if present
         return snake_case_name.removesuffix("_model")
     
-    @declared_attr
-    def __tablename__(cls) -> str:
-        """
-        Dynamically generates the `__tablename__` for the model based on the class name.
-        Converts the class name to snake_case and removes the "Model" suffix if present.
-        For example:
-            - `UserModel` becomes `user`
-            - `WatchModel` becomes `watch`
-            - `SomeOtherClass` becomes `some_other_class`
-
-        Returns:
-            str: The dynamically generated table name in snake_case format.
-        """
-
-        name = cls.__name__
-
-        # Convert CamelCase to snake_case
-        return cls.get_table_name(name=name)
-
     @classmethod
     @cache
     def get_column_names(cls):
@@ -116,7 +84,7 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         """
         inspector = inspect(cls)  # Inspect the model to get information about its columns.
         return tuple(inspector.columns.keys())  # Return the tuple of column names.
-
+    
     def as_dict(self) -> dict:
         """
         Converts the model instance into a dictionary, mapping column names to their corresponding values.
@@ -130,7 +98,7 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
         # to retrieve the value of each attribute on the instance.
 
     def __repr__(self) -> str:
-        columns_string = ", ".join(f"{key}={getattr(self, key)}" for key in self.get_column_names())
+        columns_string = ", ".join(f"{key}={getattr(self, key)}" for key in self.__mapper__.columns)
         return f"{type(self).__name__}({columns_string})"
     
     @classmethod
@@ -206,28 +174,88 @@ class BaseModel(DeclarativeBase, PkField, TimeRegisterFields):
 
         return resp
 
-
     @classmethod
     @cache
-    def cols_from_pyd(cls, pyd_model: PydBaseModel) -> tuple:
+    def cols_from_pyd(cls, schema: PydBaseModel) -> tuple[Column]:
         """
-        Retrieves columns from a Pydantic model's fields and maps them to the ORM columns.
+        Maps Pydantic model fields to corresponding SQLAlchemy ORM columns.
 
-        This method takes a Pydantic model (`pyd_model`) and uses its `model_fields` to extract 
-        the corresponding ORM columns. It caches the result to improve performance when 
-        dealing with repeated lookups. This is useful for dynamically converting Pydantic models 
-        into SQLAlchemy columns, ensuring consistency between the schema definitions.
+        This method extracts the columns from a Pydantic model's fields using the model's 
+        `model_fields` attribute and maps them to the appropriate SQLAlchemy columns. 
+        The result is cached to optimize performance when performing repeated lookups. 
+        It ensures that the fields defined in the Pydantic model align with the columns 
+        in the corresponding SQLAlchemy model.
 
         Args:
-            pyd_model (PydBaseModel): The Pydantic model from which the ORM columns are derived.
-        
+            schema (PydBaseModel): 
+                The Pydantic model whose fields will be mapped to SQLAlchemy columns.
+
         Returns:
-            tuple: A tuple of `Column` objects mapped from the Pydantic model's fields, 
-            typically corresponding to the columns defined in the SQLAlchemy model.
-        
+            tuple[Column]: 
+                A tuple of SQLAlchemy `Column` objects corresponding to the fields in the 
+                provided Pydantic model.
+
         Example:
-            pyd_model = MyPydanticModel
-            columns = MyModel.cols_from_pyd(pyd_model)
-            # Returns a tuple of Column objects corresponding to the model_fields of MyPydanticModel
+            ```python
+            # Define a Pydantic model
+            class MyPydanticModel(BaseModel):
+                id: int
+                name: str
+
+            # Use cols_from_pyd to retrieve corresponding columns
+            columns = MyModel.cols_from_pyd(MyPydanticModel)
+            # Returns a tuple of Column objects corresponding to 'id' and 'name'
+            ```
+
+        Notes:
+            - This method ensures consistency between Pydantic models and SQLAlchemy ORM models.
+            - Caching improves efficiency by preventing repeated lookups of columns for the same Pydantic model.
+            - Designed for dynamic conversion of Pydantic models to SQLAlchemy columns, simplifying the construction of queries.
+
+        Edge Cases:
+            - The `schema` argument should be a valid instance of a Pydantic model to avoid unexpected behavior.
         """
-        return cls.get_columns(tuple(pyd_model.model_fields))
+        return cls.get_columns(tuple(schema.model_fields))
+
+    @classmethod
+    def set_automap_methods(cls, automap_cls: Any) -> None:
+
+        for key, val in cls.__dict__.items():
+            if hasattr(automap_cls, key):
+                continue
+            setattr(automap_cls, key, val)
+    
+
+class BaseModel(DeclarativeBase, PkField, TimeRegisterFields, BaseModelMethods):
+    """
+    A base model that combines primary key and time-tracking fields.
+    This class is intended to be inherited by other model classes.
+    
+    It automatically adds common fields like `id`, `created_at`, and `updated_at`
+    while providing methods for handling column names and converting instances to dictionaries.
+    """
+
+    __abstract__ = True
+    __allow_unmapped__ = True
+
+    metadata = default_metadata
+
+    @declared_attr
+    def __tablename__(cls) -> str:
+        """
+        Dynamically generates the `__tablename__` for the model based on the class name.
+        Converts the class name to snake_case and removes the "Model" suffix if present.
+        For example:
+            - `UserModel` becomes `user`
+            - `WatchModel` becomes `watch`
+            - `SomeOtherClass` becomes `some_other_class`
+
+        Returns:
+            str: The dynamically generated table name in snake_case format.
+        """
+
+        name = cls.__name__
+
+        # Convert CamelCase to snake_case
+        return cls.get_table_name(name=name)
+    

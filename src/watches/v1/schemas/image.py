@@ -3,7 +3,7 @@ from src.utils.schemas import BaseDbSchema
 
 
 class WIContentSchema(BaseModel):
-    image_url: str
+    watch_image_url: str
 
 
 class WISchema(WIContentSchema):

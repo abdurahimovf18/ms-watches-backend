@@ -1,12 +1,18 @@
 from functools import wraps
-from typing import Callable, Any, Optional
+from typing import Callable, Any, Optional, Sequence
+from decimal import Decimal
 
 import hashlib
 import orjson
 from loguru import logger 
 
+from pydantic import BaseModel
+
 from .base_instance import CacheInstanceAbs
 from .base_cache_service import BaseCacheService
+
+
+class Undefined: pass
 
 
 class CacheExtendedInstance(CacheInstanceAbs):
@@ -24,7 +30,24 @@ class CacheExtendedInstance(CacheInstanceAbs):
     """
 
     @staticmethod
-    def _serialize(data: Any) -> bytes:
+    def handle_pydantic(instance: BaseModel) -> dict:
+        return instance.model_dump()
+    
+    @staticmethod
+    def handle_decimal(instance: Decimal) -> str:
+        return str(instance)
+        
+    def handle_orjson_defaults(self, instance: Any):
+        methods = {
+            BaseModel: self.handle_pydantic,
+            Decimal: self.handle_decimal,
+        }
+
+        for type_, method in methods.items():
+            if isinstance(instance, type_):
+                return method(instance)
+
+    def _serialize(self, data: Any) -> bytes:
         """
         Serialize a Python object into a JSON-encoded bytes object using orjson.
 
@@ -42,7 +65,7 @@ class CacheExtendedInstance(CacheInstanceAbs):
             TypeError: If the data contains unsupported types that cannot be serialized.
         """
         try:
-            return orjson.dumps(data)
+            return orjson.dumps(data, default=self.handle_orjson_defaults)
         except Exception as e:
             raise TypeError(f"Serialization failed for data of type {type(data)}: {e}") from e
 
@@ -94,7 +117,10 @@ class CacheExtendedInstance(CacheInstanceAbs):
         # Return the cache key using the provided prefix and the hash
         return f"{prefix}:{key_hash}"
 
-    def cache_function(self, expiry: int = 15 * 60, prefix: Optional[str] = None) -> Callable:
+    def cache_function(self, 
+                       expiry: int = 15 * 60, 
+                       prefix: Optional[str] = None,
+                       not_cache_on_type: Sequence[Any] | Any | Undefined = Undefined) -> Callable:
         """
         Cache the result of a function call in Redis using a decorator.
 
@@ -107,6 +133,8 @@ class CacheExtendedInstance(CacheInstanceAbs):
             expiry (int): The cache expiry time in seconds (default is 3600 seconds, or 1 hour).
             prefix (Optional[str]): An optional prefix for the cache key. If not provided, 
                                     the function's name will be used.
+            not_cache_on_type (Sequence[Any] | Any | Undefined): An optional parameter used to restinct
+                                                                 cache when edge type comes as result
 
         Returns:
             Callable: A decorator that wraps the function with caching logic.
@@ -117,33 +145,32 @@ class CacheExtendedInstance(CacheInstanceAbs):
         def decorator(func: Callable) -> Callable:
             @wraps(func)
             async def wrapper(*args: Any, **kwargs: Any) -> Any:
-                # Use the function name as a prefix if none is provided
                 _prefix = prefix or func.__name__
 
-                # Generate a unique cache key based on the prefix and function parameters
                 key = self.get_cache_name(_prefix, *args, **kwargs)
 
-                # Try to fetch the cached data
-                cached_data = await self.get(key)
-
-                if cached_data:
+                try:
+                    cached_data = await self.get(key)
+                except Exception as exc:
+                    logger.error(str(exc))
+                    cached_data = None
+                
+                if cached_data is not None:
                     try:
                         return self._deserialize(cached_data)
                     except (TypeError, ValueError) as e:
                         logger.error(f"Deserialization error: {str(e)}")
-                        # Continue and execute the function if deserialization fails
 
-                # Execute the function if the data is not cached
                 result = await func(*args, **kwargs)
 
+                if isinstance(result, not_cache_on_type):
+                    return result
+
                 try:
-                    # Cache the result (serialized) with an expiry time
                     await self.set(key, self._serialize(result), ex=expiry)
                 except Exception as e:
                     logger.error(f"Error during Redis set operation: {str(e)}")
-                    raise RuntimeError("Failed to cache the result.") from e
 
-                # Return the function result
                 return result
 
             return wrapper
@@ -157,7 +184,8 @@ class CacheExtendedInstance(CacheInstanceAbs):
         self,
         expiry: int = 15 * 60,
         prefix: Optional[str] = None,
-        is_classmethod: bool = True
+        is_classmethod: bool = True,
+        not_cache_on_type: Sequence[Any] | Any | Undefined = Undefined
     ) -> Callable:
         
         """
@@ -173,6 +201,8 @@ class CacheExtendedInstance(CacheInstanceAbs):
             prefix (str | None): The prefix for the cache key. If `None`, no prefix is used.
             is_classmethod (bool): If `True`, the decorator is applied to class methods. If `False`, 
                                     it is applied to instance methods.
+            not_cache_on_type (Sequence[Any] | Any | Undefined): An optional parameter used to restinct
+                                                                 cache when edge type comes as result
 
         Returns:
             Callable: A decorator that wraps the function with caching logic.
@@ -190,7 +220,9 @@ class CacheExtendedInstance(CacheInstanceAbs):
             define how the cache is applied (e.g., using an in-memory cache, Redis, etc.).
         """
         
-        cf_decorator = self.cache_function(expiry=expiry, prefix=prefix)
+        cf_decorator = self.cache_function(expiry=expiry, 
+                                           prefix=prefix, 
+                                           not_cache_on_type=not_cache_on_type)
         clsm = is_classmethod and classmethod or self.no_op_decorator
 
         def decorator(func):

@@ -1,5 +1,6 @@
-# from enum import Enum
+from enum import Enum
 
 
-# class CountryImageTypes(Enum):
-#     pass
+class CountryImageTypes(Enum):
+    ICON = "ICON"
+    

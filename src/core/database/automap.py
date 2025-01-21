@@ -3,8 +3,11 @@ import re
 
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
-from .database_settings import DB_SYNC_URL
 
+from loguru import logger
+
+from .database_settings import DB_SYNC_URL
+from .utils.base_model import BaseModelMethods
 
 # Create an AutomapBase instance for reflecting database tables
 automap = automap_base()
@@ -71,7 +74,11 @@ def get_model(name: ModelName | TableName, automap: Any = automap):
     # Check if the table name exists in the automap classes
     if not hasattr(cls, table_name):
         table_define = "table" if name == table_name else "model"
-        raise ValueError(f"automap_base object {automap!s} does not have {table_define} '{name}'.")
+        logger.error(f"automap_base object {automap!s} does not have {table_define} '{name}'."
+                     f"Response of current function will be NoneType for this {table_define} {name}")
+        
+        return None
 
     # Return the dynamically mapped class
-    return getattr(cls, table_name)
+    automap_cls = getattr(cls, table_name)
+    return automap_cls

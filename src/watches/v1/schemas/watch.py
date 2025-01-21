@@ -9,7 +9,7 @@ class WaSaveDbRespSchema(BaseModel):
     short_description: str
     price: Decimal
     discount_percent: Decimal
-    image_url: str
+    watch_image_url: str
 
 
 class WaFeParamSchema(BaseModel):
@@ -21,12 +21,12 @@ class WaFeRespSchema(WaSaveDbRespSchema):
 
 
 class WaTwParamSchema(BaseModel):
-    pass
+    limit: int = Field(gt=0, default=1)
 
 
 class WaTwRespSchema(BaseModel):
     watch_id: int
-    image_url: str
+    watch_image_url: str
     name: str
     
 

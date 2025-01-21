@@ -8,19 +8,14 @@ from .token_services import get_jwt_token, hash_password, verify_password
 from . import db, cache
 
 
-from ..schemas import (
-    UserLoginSchema,
-    UserRegisterSchema,
-    UserLoginResponseSchema,
-    UserRegisterResponseSchema,
-    )
+from ..schemas import users
 
 
-async def register_user(user: UserRegisterSchema) -> UserRegisterResponseSchema:
-    user.password = hash_password(user.password)
+async def register_user(params: users.UsReParamSchema) -> users.UsReRespSchema:
+    params.password = hash_password(params.password)
 
     try:
-        response: dict = await db.save_user(new_user=user)
+        response: dict = await db.save_user(params=params)
     except IntegrityError as exc:
         logger.info(str(exc))
         raise HTTPException(status.HTTP_409_CONFLICT, "User already exists")     
@@ -28,13 +23,12 @@ async def register_user(user: UserRegisterSchema) -> UserRegisterResponseSchema:
         logger.error(f"Error occured while registering user: {exc!s}")
         raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "Internal server error")
     
-    return UserRegisterResponseSchema(**response)
+    return users.UsReRespSchema(**response)
 
 
-async def login_user(user: UserLoginSchema) -> UserLoginResponseSchema:
+async def login_user(params: users.UsLgParamSchema) -> users.UsLgRespSchema:
     try:
-        # Fetch user data by email
-        user_data: dict = await db.get_user_by_email(email=user.email)
+        user_data: dict = await db.get_user_by_email(params=params)
     except NoResultFound:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Email or Password is incorrect")
     except Exception as exc:
@@ -42,7 +36,7 @@ async def login_user(user: UserLoginSchema) -> UserLoginResponseSchema:
         raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "Internal server error")
 
     # Verify password
-    if not verify_password(user.password, user_data["password"]):
+    if not verify_password(params.password, user_data["password"]):
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Email or Password is incorrect")
 
     # Check if the user's account is active
@@ -57,8 +51,9 @@ async def login_user(user: UserLoginSchema) -> UserLoginResponseSchema:
 
     # Generate JWT token
     access_token = get_jwt_token(data=token_payload)
+
     if access_token is None:
         logger.error("Failed to generate JWT token")
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error")
 
-    return UserLoginResponseSchema(token=access_token)
+    return users.UsLgRespSchema(access_token=access_token)

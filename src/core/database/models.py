@@ -9,6 +9,7 @@ from src.watches.models import WatchesModel
 from src.watches.models import WatchImagesModel
 from src.watches.models import WatchDescriptionsModel
 from src.countries.models import CountriesModel
+from src.countries.models import CountryImageTypes
 from src.brands.models import BrandsModel
 from src.brands.models import BrandImagesModel
 from src.tags.models import TagsModel
@@ -72,6 +73,25 @@ class TagsToWatchesModel(BaseModel):
 class CollectionsToWatchesModel(BaseModel):
     collection_id: Mapped[int] = mapped_column(
         DB_ID_TYPE, ForeignKey("collections.id", ondelete="CASCADE")
+    )
+
+    watch_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("watches.id", ondelete="CASCADE"), nullable=False
+    )
+
+    @declared_attr
+    def __table_args__(cls):
+        args = (
+            Index(f'{cls.__tablename__}_index_watch_id', 'watch_id'),
+        )
+
+        parent_args = getattr(super(), "__table_args__", ()) or ()
+        return parent_args + args
+
+
+class LikesModel(BaseModel):
+    user_id: Mapped[int] = mapped_column(
+        DB_ID_TYPE, ForeignKey("users.id", ondelete="CASCADE")
     )
 
     watch_id: Mapped[int] = mapped_column(

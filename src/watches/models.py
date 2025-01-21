@@ -89,8 +89,8 @@ class WatchDescriptionsModel(BaseModel):
 
 
 class WatchImagesModel(BaseModel):
-    image_type: Mapped[WatchImageType] = mapped_column(Enum(WatchImageType), nullable=False, default="DEFAULT")
-    image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    watch_image_type: Mapped[WatchImageType] = mapped_column(Enum(WatchImageType), nullable=False, default="DEFAULT")
+    watch_image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
 
     @declared_attr
     def __table_args__(cls):
@@ -113,4 +113,3 @@ class WatchImagesModel(BaseModel):
 
         parent_args = getattr(super(), "__table_args__", ()) or ()
         return parent_args + args
-
