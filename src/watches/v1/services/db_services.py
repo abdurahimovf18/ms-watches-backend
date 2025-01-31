@@ -26,7 +26,7 @@ class WatchDbServices(db_services.DbService):
                 cls.watch_model,
                 and_(
                     cls.img_model.watch_id == cls.watch_model.id, 
-                    cls.img_model.watch_image_type == consts.WatchImageType.FEATURED
+                    cls.img_model.watch_image_type == consts.WatchImageType.PLACEHOLDER
                 )
             ).order_by(cls.watch_model.created_at.desc())
             .limit(params.limit)
@@ -74,11 +74,11 @@ class WatchDbServices(db_services.DbService):
                 cls.watch_model,
                 and_(
                     cls.img_model.watch_id == cls.watch_model.id, 
-                    cls.img_model.watch_image_type == consts.WatchImageType.FEATURED
+                    cls.img_model.watch_image_type == consts.WatchImageType.PLACEHOLDER
                 )
             ).limit(params.limit)
             .order_by(cls.watch_model.created_at)
         )
 
         resp = await session.execute(query)
-        return tuple(cls.row_to_dict(row) for row in resp.mappings().all())
+        return cls.rows_to_dict(resp.mappings().all())

@@ -4,12 +4,13 @@ from pydantic import BaseModel, Field
 
 
 class WaSaveDbRespSchema(BaseModel):
-    watch_id: int
+    id: int
     name: str
     short_description: str
     price: Decimal
     discount_percent: Decimal
     watch_image_url: str
+    special_event: str | None = Field(default=None)
 
 
 class WaFeParamSchema(BaseModel):

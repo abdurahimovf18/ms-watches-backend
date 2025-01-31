@@ -1,11 +1,13 @@
 from functools import wraps
-from typing import Callable, Any, Optional, Sequence
+from typing import Callable, Any, Optional, Sequence, Type, Literal
+from collections.abc import Mapping
 from decimal import Decimal
 
 import hashlib
 import orjson
 from loguru import logger 
 
+from sqlalchemy.sql.elements import quoted_name
 from pydantic import BaseModel
 
 from .base_instance import CacheInstanceAbs
@@ -14,8 +16,129 @@ from .base_cache_service import BaseCacheService
 
 class Undefined: pass
 
+from typing import Any
+from pydantic import BaseModel
+from decimal import Decimal
+
+
+class DataSerializer:
+    """
+    A class responsible for serializing and deserializing data using orjson.
+    It handles various data types with custom methods to ensure correct serialization.
+    """
+    
+    def __init__(self, data: Any):
+        """
+        Initializes the DataSerializer with data to be serialized or deserialized.
+        
+        Args:
+            data (Any): The data to be serialized or deserialized.
+        """
+        self.data = data
+
+        # Mapping of types to their respective handling methods.
+        self.methods = {
+            BaseModel: self.handle_pydantic,
+            Decimal: self.handle_decimal,
+        }
+        
+    @property
+    def serialized(self) -> Any:
+        """
+        Serializes the data using orjson's dumps method. If the data contains 
+        custom types, the `handle_orjson_defaults` method is used to handle them.
+        
+        Returns:
+            Any: The serialized data in JSON format.
+        
+        Raises:
+            RuntimeError: If an error occurs during serialization.
+        """
+        try:
+            return orjson.dumps(self.data, default=self.handle_orjson_defaults)
+        except Exception as e:
+            raise RuntimeError(
+                f"Error on serializing data for orjson.dumps method\n"
+                f"Data: {self.data}\n"
+                f"Data Type: {type(self.data)}\n"
+                f"Module: {self.__module__}\n\n"
+                f"Error: {e}"
+            ) from e
+
+    @property
+    def deserialized(self) -> Any:
+        """
+        Deserializes the data using orjson's loads method.
+        
+        Returns:
+            Any: The deserialized data.
+        
+        Raises:
+            RuntimeError: If an error occurs during deserialization.
+        """
+        try:
+            return orjson.loads(self.data)
+        except Exception as e:
+            raise RuntimeError(
+                f"Error on deserializing data for orjson.loads method\n"
+                f"Data: {self.data}\n"
+                f"Data Type: {type(self.data)}\n"
+                f"Module: {self.__module__}\n\n"
+                f"Error: {e}"
+            ) from e
+
+    @staticmethod
+    def handle_pydantic(instance: BaseModel) -> dict:
+        """
+        Handles serialization of Pydantic BaseModel instances by calling the 
+        `model_dump` method to convert the instance to a dictionary.
+        
+        Args:
+            instance (BaseModel): The Pydantic model instance to serialize.
+        
+        Returns:
+            dict: A dictionary representation of the Pydantic model.
+        """
+        return instance.model_dump()
+    
+    @staticmethod
+    def handle_decimal(instance: Decimal) -> str:
+        """
+        Handles serialization of Decimal instances by converting them to strings.
+        
+        Args:
+            instance (Decimal): The Decimal instance to serialize.
+        
+        Returns:
+            str: A string representation of the Decimal value.
+        """
+        return str(instance)
+            
+    def handle_orjson_defaults(self, instance: Any):
+        """
+        Handles custom serialization for types that are not natively serializable 
+        by orjson by checking the type of the instance and applying the corresponding method.
+        
+        Args:
+            instance (Any): The instance to serialize.
+        
+        Returns:
+            Any: The serialized form of the instance.
+        
+        Raises:
+            TypeError: If no handler is available for the type of the instance.
+        """
+        for type_, method in self.methods.items():
+            if isinstance(instance, type_):
+                return method(instance)
+        raise TypeError(f"Unsupported type: {type(instance)}")
+
 
 class CacheExtendedInstance(CacheInstanceAbs):
+    """
+    A class that extends CacheInstanceAbs to provide caching functionality 
+    using Redis, along with serialization and deserialization using orjson.
+    """
 
     CacheService = BaseCacheService
 
@@ -23,74 +146,6 @@ class CacheExtendedInstance(CacheInstanceAbs):
         super().__init__(*args, **kwargs)
 
         self.CacheService.set_cache_instance(self)
-
-    """
-    A class that extends CacheInstanceAbs to provide caching functionality 
-    using Redis, along with serialization and deserialization using orjson.
-    """
-
-    @staticmethod
-    def handle_pydantic(instance: BaseModel) -> dict:
-        return instance.model_dump()
-    
-    @staticmethod
-    def handle_decimal(instance: Decimal) -> str:
-        return str(instance)
-        
-    def handle_orjson_defaults(self, instance: Any):
-        methods = {
-            BaseModel: self.handle_pydantic,
-            Decimal: self.handle_decimal,
-        }
-
-        for type_, method in methods.items():
-            if isinstance(instance, type_):
-                return method(instance)
-
-    def _serialize(self, data: Any) -> bytes:
-        """
-        Serialize a Python object into a JSON-encoded bytes object using orjson.
-
-        This method is responsible for converting Python objects into a byte format that
-        can be stored in a cache (such as Redis). It ensures that the data is correctly
-        serialized into a format that can be reliably stored and retrieved.
-
-        Args:
-            data (Any): The Python object to serialize.
-
-        Returns:
-            bytes: The JSON-encoded bytes object representing the serialized data.
-
-        Raises:
-            TypeError: If the data contains unsupported types that cannot be serialized.
-        """
-        try:
-            return orjson.dumps(data, default=self.handle_orjson_defaults)
-        except Exception as e:
-            raise TypeError(f"Serialization failed for data of type {type(data)}: {e}") from e
-
-    @staticmethod
-    def _deserialize(serialized_data: bytes) -> Any:
-        """
-        Deserialize a JSON-encoded bytes object into its original Python object using orjson.
-
-        This method converts the byte representation of an object back into its original
-        Python format. It's useful for retrieving cached data from Redis and converting
-        it back to its usable form.
-
-        Args:
-            serialized_data (bytes): The serialized bytes object to deserialize.
-
-        Returns:
-            Any: The deserialized Python object.
-
-        Raises:
-            ValueError: If deserialization fails or the data format is invalid.
-        """
-        try:
-            return orjson.loads(serialized_data)
-        except Exception as e:
-            raise ValueError("Deserialization failed. Invalid format or corrupted data.") from e
 
     def get_cache_name(self, prefix: str, *args: Any, **kwargs: Any) -> str:
         """
@@ -120,7 +175,7 @@ class CacheExtendedInstance(CacheInstanceAbs):
     def cache_function(self, 
                        expiry: int = 15 * 60, 
                        prefix: Optional[str] = None,
-                       not_cache_on_type: Sequence[Any] | Any | Undefined = Undefined) -> Callable:
+                       not_cache_on_type: Sequence[Type] | Type | Undefined = Undefined) -> Callable:
         """
         Cache the result of a function call in Redis using a decorator.
 
@@ -133,7 +188,7 @@ class CacheExtendedInstance(CacheInstanceAbs):
             expiry (int): The cache expiry time in seconds (default is 3600 seconds, or 1 hour).
             prefix (Optional[str]): An optional prefix for the cache key. If not provided, 
                                     the function's name will be used.
-            not_cache_on_type (Sequence[Any] | Any | Undefined): An optional parameter used to restinct
+            not_cache_on_type (Sequence[Type] | Type | Undefined): An optional parameter used to restinct
                                                                  cache when edge type comes as result
 
         Returns:
@@ -152,24 +207,30 @@ class CacheExtendedInstance(CacheInstanceAbs):
                 try:
                     cached_data = await self.get(key)
                 except Exception as exc:
-                    logger.error(str(exc))
+                    logger.error(f"Error during Redis get operation {exc!s}")
                     cached_data = None
                 
                 if cached_data is not None:
                     try:
-                        return self._deserialize(cached_data)
-                    except (TypeError, ValueError) as e:
-                        logger.error(f"Deserialization error: {str(e)}")
+                        return DataSerializer(cached_data).deserialized
+                    except Exception as exc:
+                        logger.error(str(exc))
 
                 result = await func(*args, **kwargs)
 
                 if isinstance(result, not_cache_on_type):
                     return result
+                
+                try:
+                    set_data = DataSerializer(result).serialized
+                except Exception as exc:
+                    logger.error(str(exc))
+                    return result
 
                 try:
-                    await self.set(key, self._serialize(result), ex=expiry)
+                    await self.set(key, set_data, ex=expiry)
                 except Exception as e:
-                    logger.error(f"Error during Redis set operation: {str(e)}")
+                    logger.error(f"Error during Redis set operation: {e!s}")
 
                 return result
 
@@ -177,15 +238,25 @@ class CacheExtendedInstance(CacheInstanceAbs):
         return decorator
 
     @staticmethod    
-    def no_op_decorator(func: Callable) -> Callable:
-        return func
+    def no_op_decorator(function: Callable) -> Callable:
+        """
+        Decorator that returns exac same function which gets in params. This function is used
+        to improve DX in the code
+
+        Params:
+            func (Callable): the function which returns instantly
+        
+        Returns:
+            (Callable): exac same function which is given
+        """
+        return function
     
     def cache_method(
         self,
         expiry: int = 15 * 60,
         prefix: Optional[str] = None,
         is_classmethod: bool = True,
-        not_cache_on_type: Sequence[Any] | Any | Undefined = Undefined
+        not_cache_on_type: Sequence[Type] | Type | Undefined = Undefined
     ) -> Callable:
         
         """
@@ -201,7 +272,7 @@ class CacheExtendedInstance(CacheInstanceAbs):
             prefix (str | None): The prefix for the cache key. If `None`, no prefix is used.
             is_classmethod (bool): If `True`, the decorator is applied to class methods. If `False`, 
                                     it is applied to instance methods.
-            not_cache_on_type (Sequence[Any] | Any | Undefined): An optional parameter used to restinct
+            not_cache_on_type (Sequence[Type] | Type | Undefined): An optional parameter used to restinct
                                                                  cache when edge type comes as result
 
         Returns:

@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Sequence, Any, Callable
+from typing import Sequence, Any, Generator, Optional, Mapping
 
 import re
 
@@ -9,6 +9,8 @@ from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped, declared_attr
 from sqlalchemy import Integer, DateTime, func, inspect, Column
 
 from sqlalchemy.orm.properties import MappedColumn
+
+from sqlalchemy.sql.elements import Label
 
 from src.core.base_settings import TIMEZONE
 from src.core.utils.cache import cache
@@ -103,23 +105,23 @@ class BaseModelMethods:
     
     @classmethod
     @cache
-    def get_columns(cls, fields: Sequence[str] | None = None) -> tuple:
+    def get_orm_cols(cls, fields: Optional[Sequence[str]] = None) -> tuple[Column]:
         """
         Retrieve the database columns for the model class.
 
         This method uses SQLAlchemy's `inspect` to access the model's mapped columns. 
-        If no specific fields are provided, it returns all columns defined in the model.
-        If a tuple of field names is provided, it filters and returns only those columns
+        If no specific fields are provided, it returns all columns defined in the model. 
+        If a sequence of field names is provided, it filters and returns only those columns
         that match the specified names.
 
         Args:
-            fields (Sequence[str] | None): 
-                An optional tuple of column names to filter. If `None`, all columns
-                from the model are returned.
+            fields (Optional[Sequence[str]]): 
+                A sequence of column names to filter the columns returned. If `None`, 
+                all columns from the model are returned.
 
         Returns:
             tuple: 
-                A tuple of SQLAlchemy column objects. If `fields` is provided, the tuple 
+                A tuple of SQLAlchemy `Column` objects. If `fields` is provided, the tuple 
                 contains only the columns matching the specified field names. Otherwise, 
                 it includes all columns of the model.
 
@@ -131,52 +133,100 @@ class BaseModelMethods:
             >>>     email = Column(String)
 
             >>> # Retrieve all columns
-            >>> User.get_columns()
-            [User.id, User.name, User.email]
+            >>> User.get_orm_cols()
+            (User.id, User.name, User.email)
 
             >>> # Retrieve specific columns
-            >>> User.get_columns(fields=["id", "name"])
-            [User.id, User.name]
+            >>> User.get_orm_cols(fields=["id", "name"])
+            (User.id, User.name)
         """
-        mapper = inspect(cls)
+        keys = inspect(cls).c.keys()
 
-        if fields is None:
-            return mapper.c.values()
-        
-        return tuple(val for key, val in mapper.c.items() if key in fields)
-    
-    @classmethod
-    def get_orm_cols(cls):
-        """
-        Retrieves all ORM columns defined in the class and its base classes.
+        if fields is not None:
+            fields = set(fields)
+            keys = filter(lambda key: key in fields, keys)
 
-        This method traverses the method resolution order (MRO) of the class to collect
-        all columns defined in the class and its ancestors. It looks for attributes that 
-        are instances of `Column` and returns them as a list. This is useful for introspecting 
-        the model's columns in a flexible way, including columns defined in base classes.
-
-        Returns:
-            list[Column]: A list of `Column` objects found in the class's MRO. These columns 
-            represent the model's schema.
-        
-        Example:
-            columns = MyModel.get_orm_cols()
-            # Returns a list of Column objects defined in MyModel and its base classes
-        """
-        clses = cls.__mro__  # Get the method resolution order (MRO)
-
-        resp = []
-
-        for class_ in clses:
-            for val in class_.__dict__.values():
-                if isinstance(val, Column):
-                    resp.append(val)
-
-        return resp
+        return tuple(getattr(cls, key) for key in keys)
 
     @classmethod
     @cache
-    def cols_from_pyd(cls, schema: PydBaseModel) -> tuple[Column]:
+    def get_aliased_cols(cls, 
+                         source: Optional[Mapping] = None,
+                         fields: Optional[Sequence[str]] = None, 
+                         alias: Optional[dict[str, str]] = None) -> tuple[Column | Label]:
+        """
+        Retrieve aliased columns for the model class, allowing renaming of columns
+        with an alias. This method uses SQLAlchemy's `inspect` to access the model's 
+        columns and optionally applies an alias to specific columns.
+
+        Args:
+            source (Optional[Any]):
+                A source if any other function or method is inherted from it.
+            fields (Optional[Sequence[str]]): 
+                A sequence of column names to filter the columns returned. If `None`, 
+                all columns from the model are returned.
+            alias (Optional[dict[str, str]]): 
+                A dictionary mapping column names to aliases. If provided, the columns 
+                matching the keys will have their names replaced with the corresponding alias.
+
+        Returns:
+            tuple: 
+                A tuple of SQLAlchemy `Column` or `Label` objects. If `fields` is provided, 
+                only the columns matching the specified field names will be returned. If 
+                an alias is provided, columns will be returned with their labels.
+
+        Example:
+            >>> class User(Base):
+            >>>     __tablename__ = "users"
+            >>>     id = Column(Integer, primary_key=True)
+            >>>     name = Column(String)
+            >>>     email = Column(String)
+
+            >>> # Retrieve all columns with aliases
+            >>> User.get_aliased_cols(alias={"id": "user_id", "name": "user_name"})
+            (Label('user_id', User.id), Label('user_name', User.name))
+
+            >>> # Retrieve specific columns with aliases
+            >>> User.get_aliased_cols(fields=["id", "name"], alias={"id": "user_id"})
+            (Label('user_id', User.id), User.name)
+        """
+        source = source or inspect(cls).c
+        item_gen = source.items()
+
+        alias = alias or {}
+        
+        if fields is not None:
+            item_gen = (d for d in item_gen if d[0] in fields)
+
+        return tuple(cls.alias_generator(columns=item_gen, alias=alias))
+
+    @staticmethod
+    def alias_generator(columns: Generator[Column, None, None], 
+                        alias: dict[str, str]) -> Generator[Column | Label, None, None]:
+        """
+        Generates aliased columns by applying aliases from the given dictionary to
+        the columns.
+
+        Args:
+            columns (Generator[Column, None, None]): 
+                A generator of SQLAlchemy `Column` objects to apply aliases to.
+            alias (dict[str, str]): 
+                A dictionary mapping column names to aliases. Columns whose names are in
+                the dictionary will be given the corresponding alias.
+
+        Yields:
+            Column | Label: 
+                Yields either the original column or an aliased column as a `Label` object.
+        """
+        for key, col in columns:
+            if key in alias:
+                yield col.label(alias[key])
+            else:
+                yield col
+
+    @classmethod
+    @cache
+    def cols_from_pyd(cls, schema: PydBaseModel, alias: dict[str, str] | None = None) -> tuple[Column | Label]:
         """
         Maps Pydantic model fields to corresponding SQLAlchemy ORM columns.
 
@@ -215,7 +265,7 @@ class BaseModelMethods:
         Edge Cases:
             - The `schema` argument should be a valid instance of a Pydantic model to avoid unexpected behavior.
         """
-        return cls.get_columns(tuple(schema.model_fields))
+        return cls.get_aliased_cols(fields=set(schema.model_fields), alias=alias)
 
     @classmethod
     def set_automap_methods(cls, automap_cls: Any) -> None:

@@ -20,7 +20,7 @@ class BaseCacheService:
     """
 
     db_services = ...
-    c = CacheInstanceAbs
+    c: CacheInstanceAbs
 
     @classmethod
     def set_db_services(cls, db_serivices):

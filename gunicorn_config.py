@@ -10,7 +10,7 @@ worker_class = "uvicorn.workers.UvicornWorker"
 bind = "0.0.0.0:8000"  # You can replace with your server address if needed
 
 # The log level (choices: debug, info, warning, error, critical)
-loglevel = "info"
+loglevel = "critical"
 
 # Access log format (optional, to log incoming requests)
 accesslog = "-"  # "-" means output to stdout

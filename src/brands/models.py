@@ -7,7 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from src.core.database.automap import get_model
 from src.core.database.utils.base_model import BaseModel
 from src.core.base_settings import DB_ID_TYPE
-from .constants import BrandImageTypes
+from . import constants as consts
 
 
 class BrandsModel(BaseModel):
@@ -16,8 +16,8 @@ class BrandsModel(BaseModel):
 
 
 class BrandImagesModel(BaseModel):
-    brand_image_type: Mapped[BrandImageTypes] = mapped_column(Enum(BrandImageTypes), nullable=False)
-    image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    brand_image_type: Mapped[consts.BrandImageType] = mapped_column(Enum(consts.BrandImageType), nullable=True)
+    brand_image_url: Mapped[str] = mapped_column(String(2048), nullable=True)
     brand_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("brands.id", ondelete="CASCADE"), nullable=False
     )

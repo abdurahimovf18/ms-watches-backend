@@ -44,6 +44,6 @@ def register_cors_middleware(app: FastAPI):
         CORSMiddleware,
         allow_origins=ALLOWED_HOSTS,
         allow_credentials=True,
-        allow_methods=methods,
-        allow_headers=headers,
+        allow_methods=["*"],
+        allow_headers=["*"],
     )

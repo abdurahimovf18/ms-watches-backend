@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class BrandImageTypes(Enum):
+class BrandImageType(Enum):
     """
     Enumeration of brand image types to define their usage and dimensions.
     """

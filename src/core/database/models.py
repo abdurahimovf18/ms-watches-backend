@@ -1,5 +1,5 @@
 from sqlalchemy import ForeignKey, Index
-from sqlalchemy.orm import relationship, Mapped, mapped_column, declared_attr
+from sqlalchemy.orm import Mapped, mapped_column, declared_attr
 
 from src.core.base_settings import DB_ID_TYPE
 from .utils.base_model import BaseModel
@@ -14,6 +14,7 @@ from src.brands.models import BrandsModel
 from src.brands.models import BrandImagesModel
 from src.tags.models import TagsModel
 from src.collections.models import CollectionsModel
+from src.social_links.models import SocialLinksModel
 
 
 class BrandsToWatchesModel(BaseModel):

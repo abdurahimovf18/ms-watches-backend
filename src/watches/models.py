@@ -16,6 +16,7 @@ class WatchesModel(BaseModel):
         DECIMAL(5, 2), nullable=False, server_default=text("0.00")
     )
     status: Mapped[WatchStatus] = mapped_column(Enum(WatchStatus), server_default="INACTIVE")
+    special_event: Mapped[str] = mapped_column(String(512), nullable=True)
 
     # Relationships
     descriptions: Mapped[list] = relationship(
